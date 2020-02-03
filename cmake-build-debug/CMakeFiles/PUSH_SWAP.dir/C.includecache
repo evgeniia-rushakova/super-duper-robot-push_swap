@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../inc/checker.h
+../libft/includes/libft.h
+../libft/includes/libft.h
+stdarg.h
+-
+string.h
+-
+stdio.h
+-
+limits.h
+-
+float.h
+-
+
+../libft/includes/libft.h
+string.h
+-
+stdlib.h
+-
+unistd.h
+-
+
+/Users/jslave/PUSH_SWAP/src/check_validity.c
+checker.h
+/Users/jslave/PUSH_SWAP/src/checker.h
+
+/Users/jslave/PUSH_SWAP/src/checker_main.c
+checker.h
+/Users/jslave/PUSH_SWAP/src/checker.h
+
