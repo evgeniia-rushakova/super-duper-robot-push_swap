@@ -21,7 +21,7 @@ INCLUDES = inc/
 
 FLAGS =  -Wall -Wextra -Werror
 
-SRC = src/check_validity.c src/checker_main.c
+SRC = src/check_validity.c src/checker_main.c src/commands.c
 
 OUT = $(SRC:%.c=%.o)
 

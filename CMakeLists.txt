@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.15)
-project(PUSH_SWAP C)
+project(super_duper_robot_push_swap C)
 
 set(CMAKE_C_STANDARD 11)
 
 include_directories(inc)
 include_directories(libft/includes)
 
-add_executable(PUSH_SWAP
+add_executable(super_duper_robot_push_swap
         inc/checker.h
         libft/includes/get_next_line.h
         libft/includes/libft.h
@@ -82,5 +82,6 @@ add_executable(PUSH_SWAP
         libft/srcs/ft_tolower.c
         libft/srcs/ft_toupper.c
         libft/srcs/get_next_line.c
+        src/check_validity.c
         src/checker_main.c
-        src/check_validity.c)
+        src/commands.c)

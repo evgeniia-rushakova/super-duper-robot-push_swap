@@ -56,27 +56,20 @@ int 		check_nums(int ac, char **av)
 	return (1);
 }
 
-int 		check_instructions(int ac, char **av)
+int 		check_instructions(char *av)
 {
-	int i;
 	char **commands;
 	int j;
 
-	commands = (char *[11]){"sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr", "rra", "rrb", "rrb"};
+	commands = (char *[11]){"sa\n", "sb\n", "ss\n", "pa\n", "pb\n", "ra\n", "rb\n", "rr\n", "rra\n", "rrb\n", "rrr\n"};
 	j = 0;
-	i = 1;
-	while (i < ac)
+	while (j < 11)
 	{
-		j = 0;
-		while (j < 11)
-		{
-			if (ft_strequ(commands[j], av[i]) != 1)
-				return (0);
-			j++;
-		}
-		i++;
+		if (ft_strequ(commands[j], av) == 1)
+			return (1);
+		j++;
 	}
-	return (1);
+	return (0);
 }
 
 int 		check_validity(int ac, char **av)
@@ -85,7 +78,5 @@ int 		check_validity(int ac, char **av)
 		return (0);
 	if (check_duplicates(ac, av) == 0)
 		return (0);
-/*	if (check_instructions(ac, av) == 0)
-		return (0);*/
 	return (1);
 }
