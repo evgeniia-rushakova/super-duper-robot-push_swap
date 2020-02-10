@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/96148FF8-E671-46CA-9F2E-83E0BD89A62C/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/636A68D3-C779-4C31-9385-087536D78F20/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/96148FF8-E671-46CA-9F2E-83E0BD89A62C/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
+RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/636A68D3-C779-4C31-9385-087536D78F20/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /Users/jslave/PUSH_SWAP/super-duper-robot-push_swap/cmake-bui
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/96148FF8-E671-46CA-9F2E-83E0BD89A62C/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/636A68D3-C779-4C31-9385-087536D78F20/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/96148FF8-E671-46CA-9F2E-83E0BD89A62C/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/636A68D3-C779-4C31-9385-087536D78F20/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -122,6 +122,546 @@ super_duper_robot_push_swap: cmake_check_build_system
 super_duper_robot_push_swap/fast:
 	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/build
 .PHONY : super_duper_robot_push_swap/fast
+
+libft/src_printf/char_str_perc.o: libft/src_printf/char_str_perc.c.o
+
+.PHONY : libft/src_printf/char_str_perc.o
+
+# target to build an object file
+libft/src_printf/char_str_perc.c.o:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/char_str_perc.c.o
+.PHONY : libft/src_printf/char_str_perc.c.o
+
+libft/src_printf/char_str_perc.i: libft/src_printf/char_str_perc.c.i
+
+.PHONY : libft/src_printf/char_str_perc.i
+
+# target to preprocess a source file
+libft/src_printf/char_str_perc.c.i:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/char_str_perc.c.i
+.PHONY : libft/src_printf/char_str_perc.c.i
+
+libft/src_printf/char_str_perc.s: libft/src_printf/char_str_perc.c.s
+
+.PHONY : libft/src_printf/char_str_perc.s
+
+# target to generate assembly for a file
+libft/src_printf/char_str_perc.c.s:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/char_str_perc.c.s
+.PHONY : libft/src_printf/char_str_perc.c.s
+
+libft/src_printf/floats.o: libft/src_printf/floats.c.o
+
+.PHONY : libft/src_printf/floats.o
+
+# target to build an object file
+libft/src_printf/floats.c.o:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/floats.c.o
+.PHONY : libft/src_printf/floats.c.o
+
+libft/src_printf/floats.i: libft/src_printf/floats.c.i
+
+.PHONY : libft/src_printf/floats.i
+
+# target to preprocess a source file
+libft/src_printf/floats.c.i:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/floats.c.i
+.PHONY : libft/src_printf/floats.c.i
+
+libft/src_printf/floats.s: libft/src_printf/floats.c.s
+
+.PHONY : libft/src_printf/floats.s
+
+# target to generate assembly for a file
+libft/src_printf/floats.c.s:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/floats.c.s
+.PHONY : libft/src_printf/floats.c.s
+
+libft/src_printf/floats_2.o: libft/src_printf/floats_2.c.o
+
+.PHONY : libft/src_printf/floats_2.o
+
+# target to build an object file
+libft/src_printf/floats_2.c.o:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/floats_2.c.o
+.PHONY : libft/src_printf/floats_2.c.o
+
+libft/src_printf/floats_2.i: libft/src_printf/floats_2.c.i
+
+.PHONY : libft/src_printf/floats_2.i
+
+# target to preprocess a source file
+libft/src_printf/floats_2.c.i:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/floats_2.c.i
+.PHONY : libft/src_printf/floats_2.c.i
+
+libft/src_printf/floats_2.s: libft/src_printf/floats_2.c.s
+
+.PHONY : libft/src_printf/floats_2.s
+
+# target to generate assembly for a file
+libft/src_printf/floats_2.c.s:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/floats_2.c.s
+.PHONY : libft/src_printf/floats_2.c.s
+
+libft/src_printf/floats_3.o: libft/src_printf/floats_3.c.o
+
+.PHONY : libft/src_printf/floats_3.o
+
+# target to build an object file
+libft/src_printf/floats_3.c.o:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/floats_3.c.o
+.PHONY : libft/src_printf/floats_3.c.o
+
+libft/src_printf/floats_3.i: libft/src_printf/floats_3.c.i
+
+.PHONY : libft/src_printf/floats_3.i
+
+# target to preprocess a source file
+libft/src_printf/floats_3.c.i:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/floats_3.c.i
+.PHONY : libft/src_printf/floats_3.c.i
+
+libft/src_printf/floats_3.s: libft/src_printf/floats_3.c.s
+
+.PHONY : libft/src_printf/floats_3.s
+
+# target to generate assembly for a file
+libft/src_printf/floats_3.c.s:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/floats_3.c.s
+.PHONY : libft/src_printf/floats_3.c.s
+
+libft/src_printf/floats_4.o: libft/src_printf/floats_4.c.o
+
+.PHONY : libft/src_printf/floats_4.o
+
+# target to build an object file
+libft/src_printf/floats_4.c.o:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/floats_4.c.o
+.PHONY : libft/src_printf/floats_4.c.o
+
+libft/src_printf/floats_4.i: libft/src_printf/floats_4.c.i
+
+.PHONY : libft/src_printf/floats_4.i
+
+# target to preprocess a source file
+libft/src_printf/floats_4.c.i:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/floats_4.c.i
+.PHONY : libft/src_printf/floats_4.c.i
+
+libft/src_printf/floats_4.s: libft/src_printf/floats_4.c.s
+
+.PHONY : libft/src_printf/floats_4.s
+
+# target to generate assembly for a file
+libft/src_printf/floats_4.c.s:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/floats_4.c.s
+.PHONY : libft/src_printf/floats_4.c.s
+
+libft/src_printf/ft_printf.o: libft/src_printf/ft_printf.c.o
+
+.PHONY : libft/src_printf/ft_printf.o
+
+# target to build an object file
+libft/src_printf/ft_printf.c.o:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/ft_printf.c.o
+.PHONY : libft/src_printf/ft_printf.c.o
+
+libft/src_printf/ft_printf.i: libft/src_printf/ft_printf.c.i
+
+.PHONY : libft/src_printf/ft_printf.i
+
+# target to preprocess a source file
+libft/src_printf/ft_printf.c.i:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/ft_printf.c.i
+.PHONY : libft/src_printf/ft_printf.c.i
+
+libft/src_printf/ft_printf.s: libft/src_printf/ft_printf.c.s
+
+.PHONY : libft/src_printf/ft_printf.s
+
+# target to generate assembly for a file
+libft/src_printf/ft_printf.c.s:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/ft_printf.c.s
+.PHONY : libft/src_printf/ft_printf.c.s
+
+libft/src_printf/hex.o: libft/src_printf/hex.c.o
+
+.PHONY : libft/src_printf/hex.o
+
+# target to build an object file
+libft/src_printf/hex.c.o:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/hex.c.o
+.PHONY : libft/src_printf/hex.c.o
+
+libft/src_printf/hex.i: libft/src_printf/hex.c.i
+
+.PHONY : libft/src_printf/hex.i
+
+# target to preprocess a source file
+libft/src_printf/hex.c.i:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/hex.c.i
+.PHONY : libft/src_printf/hex.c.i
+
+libft/src_printf/hex.s: libft/src_printf/hex.c.s
+
+.PHONY : libft/src_printf/hex.s
+
+# target to generate assembly for a file
+libft/src_printf/hex.c.s:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/hex.c.s
+.PHONY : libft/src_printf/hex.c.s
+
+libft/src_printf/int_utils_1.o: libft/src_printf/int_utils_1.c.o
+
+.PHONY : libft/src_printf/int_utils_1.o
+
+# target to build an object file
+libft/src_printf/int_utils_1.c.o:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/int_utils_1.c.o
+.PHONY : libft/src_printf/int_utils_1.c.o
+
+libft/src_printf/int_utils_1.i: libft/src_printf/int_utils_1.c.i
+
+.PHONY : libft/src_printf/int_utils_1.i
+
+# target to preprocess a source file
+libft/src_printf/int_utils_1.c.i:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/int_utils_1.c.i
+.PHONY : libft/src_printf/int_utils_1.c.i
+
+libft/src_printf/int_utils_1.s: libft/src_printf/int_utils_1.c.s
+
+.PHONY : libft/src_printf/int_utils_1.s
+
+# target to generate assembly for a file
+libft/src_printf/int_utils_1.c.s:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/int_utils_1.c.s
+.PHONY : libft/src_printf/int_utils_1.c.s
+
+libft/src_printf/int_utils_2.o: libft/src_printf/int_utils_2.c.o
+
+.PHONY : libft/src_printf/int_utils_2.o
+
+# target to build an object file
+libft/src_printf/int_utils_2.c.o:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/int_utils_2.c.o
+.PHONY : libft/src_printf/int_utils_2.c.o
+
+libft/src_printf/int_utils_2.i: libft/src_printf/int_utils_2.c.i
+
+.PHONY : libft/src_printf/int_utils_2.i
+
+# target to preprocess a source file
+libft/src_printf/int_utils_2.c.i:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/int_utils_2.c.i
+.PHONY : libft/src_printf/int_utils_2.c.i
+
+libft/src_printf/int_utils_2.s: libft/src_printf/int_utils_2.c.s
+
+.PHONY : libft/src_printf/int_utils_2.s
+
+# target to generate assembly for a file
+libft/src_printf/int_utils_2.c.s:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/int_utils_2.c.s
+.PHONY : libft/src_printf/int_utils_2.c.s
+
+libft/src_printf/int_utils_3.o: libft/src_printf/int_utils_3.c.o
+
+.PHONY : libft/src_printf/int_utils_3.o
+
+# target to build an object file
+libft/src_printf/int_utils_3.c.o:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/int_utils_3.c.o
+.PHONY : libft/src_printf/int_utils_3.c.o
+
+libft/src_printf/int_utils_3.i: libft/src_printf/int_utils_3.c.i
+
+.PHONY : libft/src_printf/int_utils_3.i
+
+# target to preprocess a source file
+libft/src_printf/int_utils_3.c.i:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/int_utils_3.c.i
+.PHONY : libft/src_printf/int_utils_3.c.i
+
+libft/src_printf/int_utils_3.s: libft/src_printf/int_utils_3.c.s
+
+.PHONY : libft/src_printf/int_utils_3.s
+
+# target to generate assembly for a file
+libft/src_printf/int_utils_3.c.s:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/int_utils_3.c.s
+.PHONY : libft/src_printf/int_utils_3.c.s
+
+libft/src_printf/int_utils_4.o: libft/src_printf/int_utils_4.c.o
+
+.PHONY : libft/src_printf/int_utils_4.o
+
+# target to build an object file
+libft/src_printf/int_utils_4.c.o:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/int_utils_4.c.o
+.PHONY : libft/src_printf/int_utils_4.c.o
+
+libft/src_printf/int_utils_4.i: libft/src_printf/int_utils_4.c.i
+
+.PHONY : libft/src_printf/int_utils_4.i
+
+# target to preprocess a source file
+libft/src_printf/int_utils_4.c.i:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/int_utils_4.c.i
+.PHONY : libft/src_printf/int_utils_4.c.i
+
+libft/src_printf/int_utils_4.s: libft/src_printf/int_utils_4.c.s
+
+.PHONY : libft/src_printf/int_utils_4.s
+
+# target to generate assembly for a file
+libft/src_printf/int_utils_4.c.s:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/int_utils_4.c.s
+.PHONY : libft/src_printf/int_utils_4.c.s
+
+libft/src_printf/ints.o: libft/src_printf/ints.c.o
+
+.PHONY : libft/src_printf/ints.o
+
+# target to build an object file
+libft/src_printf/ints.c.o:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/ints.c.o
+.PHONY : libft/src_printf/ints.c.o
+
+libft/src_printf/ints.i: libft/src_printf/ints.c.i
+
+.PHONY : libft/src_printf/ints.i
+
+# target to preprocess a source file
+libft/src_printf/ints.c.i:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/ints.c.i
+.PHONY : libft/src_printf/ints.c.i
+
+libft/src_printf/ints.s: libft/src_printf/ints.c.s
+
+.PHONY : libft/src_printf/ints.s
+
+# target to generate assembly for a file
+libft/src_printf/ints.c.s:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/ints.c.s
+.PHONY : libft/src_printf/ints.c.s
+
+libft/src_printf/oct.o: libft/src_printf/oct.c.o
+
+.PHONY : libft/src_printf/oct.o
+
+# target to build an object file
+libft/src_printf/oct.c.o:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/oct.c.o
+.PHONY : libft/src_printf/oct.c.o
+
+libft/src_printf/oct.i: libft/src_printf/oct.c.i
+
+.PHONY : libft/src_printf/oct.i
+
+# target to preprocess a source file
+libft/src_printf/oct.c.i:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/oct.c.i
+.PHONY : libft/src_printf/oct.c.i
+
+libft/src_printf/oct.s: libft/src_printf/oct.c.s
+
+.PHONY : libft/src_printf/oct.s
+
+# target to generate assembly for a file
+libft/src_printf/oct.c.s:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/oct.c.s
+.PHONY : libft/src_printf/oct.c.s
+
+libft/src_printf/parsing.o: libft/src_printf/parsing.c.o
+
+.PHONY : libft/src_printf/parsing.o
+
+# target to build an object file
+libft/src_printf/parsing.c.o:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/parsing.c.o
+.PHONY : libft/src_printf/parsing.c.o
+
+libft/src_printf/parsing.i: libft/src_printf/parsing.c.i
+
+.PHONY : libft/src_printf/parsing.i
+
+# target to preprocess a source file
+libft/src_printf/parsing.c.i:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/parsing.c.i
+.PHONY : libft/src_printf/parsing.c.i
+
+libft/src_printf/parsing.s: libft/src_printf/parsing.c.s
+
+.PHONY : libft/src_printf/parsing.s
+
+# target to generate assembly for a file
+libft/src_printf/parsing.c.s:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/parsing.c.s
+.PHONY : libft/src_printf/parsing.c.s
+
+libft/src_printf/pnt_uns_hex.o: libft/src_printf/pnt_uns_hex.c.o
+
+.PHONY : libft/src_printf/pnt_uns_hex.o
+
+# target to build an object file
+libft/src_printf/pnt_uns_hex.c.o:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/pnt_uns_hex.c.o
+.PHONY : libft/src_printf/pnt_uns_hex.c.o
+
+libft/src_printf/pnt_uns_hex.i: libft/src_printf/pnt_uns_hex.c.i
+
+.PHONY : libft/src_printf/pnt_uns_hex.i
+
+# target to preprocess a source file
+libft/src_printf/pnt_uns_hex.c.i:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/pnt_uns_hex.c.i
+.PHONY : libft/src_printf/pnt_uns_hex.c.i
+
+libft/src_printf/pnt_uns_hex.s: libft/src_printf/pnt_uns_hex.c.s
+
+.PHONY : libft/src_printf/pnt_uns_hex.s
+
+# target to generate assembly for a file
+libft/src_printf/pnt_uns_hex.c.s:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/pnt_uns_hex.c.s
+.PHONY : libft/src_printf/pnt_uns_hex.c.s
+
+libft/src_printf/precision.o: libft/src_printf/precision.c.o
+
+.PHONY : libft/src_printf/precision.o
+
+# target to build an object file
+libft/src_printf/precision.c.o:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/precision.c.o
+.PHONY : libft/src_printf/precision.c.o
+
+libft/src_printf/precision.i: libft/src_printf/precision.c.i
+
+.PHONY : libft/src_printf/precision.i
+
+# target to preprocess a source file
+libft/src_printf/precision.c.i:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/precision.c.i
+.PHONY : libft/src_printf/precision.c.i
+
+libft/src_printf/precision.s: libft/src_printf/precision.c.s
+
+.PHONY : libft/src_printf/precision.s
+
+# target to generate assembly for a file
+libft/src_printf/precision.c.s:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/precision.c.s
+.PHONY : libft/src_printf/precision.c.s
+
+libft/src_printf/str.o: libft/src_printf/str.c.o
+
+.PHONY : libft/src_printf/str.o
+
+# target to build an object file
+libft/src_printf/str.c.o:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/str.c.o
+.PHONY : libft/src_printf/str.c.o
+
+libft/src_printf/str.i: libft/src_printf/str.c.i
+
+.PHONY : libft/src_printf/str.i
+
+# target to preprocess a source file
+libft/src_printf/str.c.i:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/str.c.i
+.PHONY : libft/src_printf/str.c.i
+
+libft/src_printf/str.s: libft/src_printf/str.c.s
+
+.PHONY : libft/src_printf/str.s
+
+# target to generate assembly for a file
+libft/src_printf/str.c.s:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/str.c.s
+.PHONY : libft/src_printf/str.c.s
+
+libft/src_printf/unsigned.o: libft/src_printf/unsigned.c.o
+
+.PHONY : libft/src_printf/unsigned.o
+
+# target to build an object file
+libft/src_printf/unsigned.c.o:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/unsigned.c.o
+.PHONY : libft/src_printf/unsigned.c.o
+
+libft/src_printf/unsigned.i: libft/src_printf/unsigned.c.i
+
+.PHONY : libft/src_printf/unsigned.i
+
+# target to preprocess a source file
+libft/src_printf/unsigned.c.i:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/unsigned.c.i
+.PHONY : libft/src_printf/unsigned.c.i
+
+libft/src_printf/unsigned.s: libft/src_printf/unsigned.c.s
+
+.PHONY : libft/src_printf/unsigned.s
+
+# target to generate assembly for a file
+libft/src_printf/unsigned.c.s:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/unsigned.c.s
+.PHONY : libft/src_printf/unsigned.c.s
+
+libft/src_printf/unsigned_2.o: libft/src_printf/unsigned_2.c.o
+
+.PHONY : libft/src_printf/unsigned_2.o
+
+# target to build an object file
+libft/src_printf/unsigned_2.c.o:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/unsigned_2.c.o
+.PHONY : libft/src_printf/unsigned_2.c.o
+
+libft/src_printf/unsigned_2.i: libft/src_printf/unsigned_2.c.i
+
+.PHONY : libft/src_printf/unsigned_2.i
+
+# target to preprocess a source file
+libft/src_printf/unsigned_2.c.i:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/unsigned_2.c.i
+.PHONY : libft/src_printf/unsigned_2.c.i
+
+libft/src_printf/unsigned_2.s: libft/src_printf/unsigned_2.c.s
+
+.PHONY : libft/src_printf/unsigned_2.s
+
+# target to generate assembly for a file
+libft/src_printf/unsigned_2.c.s:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/unsigned_2.c.s
+.PHONY : libft/src_printf/unsigned_2.c.s
+
+libft/src_printf/utils.o: libft/src_printf/utils.c.o
+
+.PHONY : libft/src_printf/utils.o
+
+# target to build an object file
+libft/src_printf/utils.c.o:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/utils.c.o
+.PHONY : libft/src_printf/utils.c.o
+
+libft/src_printf/utils.i: libft/src_printf/utils.c.i
+
+.PHONY : libft/src_printf/utils.i
+
+# target to preprocess a source file
+libft/src_printf/utils.c.i:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/utils.c.i
+.PHONY : libft/src_printf/utils.c.i
+
+libft/src_printf/utils.s: libft/src_printf/utils.c.s
+
+.PHONY : libft/src_printf/utils.s
+
+# target to generate assembly for a file
+libft/src_printf/utils.c.s:
+	$(MAKE) -f CMakeFiles/super_duper_robot_push_swap.dir/build.make CMakeFiles/super_duper_robot_push_swap.dir/libft/src_printf/utils.c.s
+.PHONY : libft/src_printf/utils.c.s
 
 libft/srcs/find_len_of_num.o: libft/srcs/find_len_of_num.c.o
 
@@ -2157,6 +2697,66 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... super_duper_robot_push_swap"
+	@echo "... libft/src_printf/char_str_perc.o"
+	@echo "... libft/src_printf/char_str_perc.i"
+	@echo "... libft/src_printf/char_str_perc.s"
+	@echo "... libft/src_printf/floats.o"
+	@echo "... libft/src_printf/floats.i"
+	@echo "... libft/src_printf/floats.s"
+	@echo "... libft/src_printf/floats_2.o"
+	@echo "... libft/src_printf/floats_2.i"
+	@echo "... libft/src_printf/floats_2.s"
+	@echo "... libft/src_printf/floats_3.o"
+	@echo "... libft/src_printf/floats_3.i"
+	@echo "... libft/src_printf/floats_3.s"
+	@echo "... libft/src_printf/floats_4.o"
+	@echo "... libft/src_printf/floats_4.i"
+	@echo "... libft/src_printf/floats_4.s"
+	@echo "... libft/src_printf/ft_printf.o"
+	@echo "... libft/src_printf/ft_printf.i"
+	@echo "... libft/src_printf/ft_printf.s"
+	@echo "... libft/src_printf/hex.o"
+	@echo "... libft/src_printf/hex.i"
+	@echo "... libft/src_printf/hex.s"
+	@echo "... libft/src_printf/int_utils_1.o"
+	@echo "... libft/src_printf/int_utils_1.i"
+	@echo "... libft/src_printf/int_utils_1.s"
+	@echo "... libft/src_printf/int_utils_2.o"
+	@echo "... libft/src_printf/int_utils_2.i"
+	@echo "... libft/src_printf/int_utils_2.s"
+	@echo "... libft/src_printf/int_utils_3.o"
+	@echo "... libft/src_printf/int_utils_3.i"
+	@echo "... libft/src_printf/int_utils_3.s"
+	@echo "... libft/src_printf/int_utils_4.o"
+	@echo "... libft/src_printf/int_utils_4.i"
+	@echo "... libft/src_printf/int_utils_4.s"
+	@echo "... libft/src_printf/ints.o"
+	@echo "... libft/src_printf/ints.i"
+	@echo "... libft/src_printf/ints.s"
+	@echo "... libft/src_printf/oct.o"
+	@echo "... libft/src_printf/oct.i"
+	@echo "... libft/src_printf/oct.s"
+	@echo "... libft/src_printf/parsing.o"
+	@echo "... libft/src_printf/parsing.i"
+	@echo "... libft/src_printf/parsing.s"
+	@echo "... libft/src_printf/pnt_uns_hex.o"
+	@echo "... libft/src_printf/pnt_uns_hex.i"
+	@echo "... libft/src_printf/pnt_uns_hex.s"
+	@echo "... libft/src_printf/precision.o"
+	@echo "... libft/src_printf/precision.i"
+	@echo "... libft/src_printf/precision.s"
+	@echo "... libft/src_printf/str.o"
+	@echo "... libft/src_printf/str.i"
+	@echo "... libft/src_printf/str.s"
+	@echo "... libft/src_printf/unsigned.o"
+	@echo "... libft/src_printf/unsigned.i"
+	@echo "... libft/src_printf/unsigned.s"
+	@echo "... libft/src_printf/unsigned_2.o"
+	@echo "... libft/src_printf/unsigned_2.i"
+	@echo "... libft/src_printf/unsigned_2.s"
+	@echo "... libft/src_printf/utils.o"
+	@echo "... libft/src_printf/utils.i"
+	@echo "... libft/src_printf/utils.s"
 	@echo "... libft/srcs/find_len_of_num.o"
 	@echo "... libft/srcs/find_len_of_num.i"
 	@echo "... libft/srcs/find_len_of_num.s"

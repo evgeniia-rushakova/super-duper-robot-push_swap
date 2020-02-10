@@ -8,8 +8,28 @@ include_directories(libft/includes)
 
 add_executable(super_duper_robot_push_swap
         inc/checker.h
-        libft/includes/get_next_line.h
+        libft/includes/ft_printf.h
         libft/includes/libft.h
+        libft/src_printf/char_str_perc.c
+        libft/src_printf/floats.c
+        libft/src_printf/floats_2.c
+        libft/src_printf/floats_3.c
+        libft/src_printf/floats_4.c
+        libft/src_printf/ft_printf.c
+        libft/src_printf/hex.c
+        libft/src_printf/int_utils_1.c
+        libft/src_printf/int_utils_2.c
+        libft/src_printf/int_utils_3.c
+        libft/src_printf/int_utils_4.c
+        libft/src_printf/ints.c
+        libft/src_printf/oct.c
+        libft/src_printf/parsing.c
+        libft/src_printf/pnt_uns_hex.c
+        libft/src_printf/precision.c
+        libft/src_printf/str.c
+        libft/src_printf/unsigned.c
+        libft/src_printf/unsigned_2.c
+        libft/src_printf/utils.c
         libft/srcs/find_len_of_num.c
         libft/srcs/ft_atoi.c
         libft/srcs/ft_atoi_base.c

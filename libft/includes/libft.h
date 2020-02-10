@@ -16,6 +16,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# define BUFF_SIZE 100
 
 typedef struct			s_list
 {
@@ -107,5 +108,6 @@ size_t					find_len_of_num(long long int n);
 char					*ft_itoa_long_long_uns(unsigned long long int n);
 char					*ft_itoa_long_long(long long int n);
 char					*ft_strreverse(char *str);
+int					    ft_printf(const char *format, ...);
 
 #endif

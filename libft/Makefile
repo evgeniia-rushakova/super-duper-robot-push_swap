@@ -30,7 +30,18 @@ SRC =	srcs/ft_bzero.c srcs/ft_memset.c srcs/ft_strcat.c srcs/ft_strcpy.c \
 		srcs/ft_lstappendelem.c srcs/ft_count_if.c srcs/ft_strjoinfree.c srcs/get_next_line.c srcs/ft_atoi_base.c \
 		srcs/ft_itoa_base_unsigned.c srcs/ft_atoi_long_long.c srcs/find_len_of_num.c srcs/ft_itoa_long_long.c srcs/ft_strreverse.c
 
+SRC_PRINTF = src_printf/char_str_perc.c src_printf/precision.c src_printf/floats.c src_printf/floats_2.c \
+        src_printf/floats_3.c src_printf/floats_4.c src_printf/ft_printf.c src_printf/ints.c src_printf/parsing.c \
+        src_printf/pnt_uns_hex.c src_printf/str.c src_printf/utils.c src_printf/int_utils_1.c src_printf/int_utils_2.c \
+        src_printf/int_utils_3.c src_printf/oct.c src_printf/hex.c src_printf/unsigned.c src_printf/unsigned_2.c src_printf/int_utils_4.c
+
+HEADER = ./includes/libft.h
+
+PRINTF_HEADER = ./includes/ft_printf.h
+
 OUT = $(SRC:%.c=%.o)
+
+OUT_PRINTF = $(SRC_PRINTF:%.c=%.o)
 
 INCLUDES = includes
 
@@ -38,15 +49,15 @@ FLAG = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME): $(OUT)
-	ar rc $(NAME) $(OUT)
+$(NAME): $(OUT) $(OUT_PRINTF)
+	ar rc $(NAME) $(OUT) $(OUT_PRINTF)
 	ranlib $(NAME)
 
-%.o: %.c
+%.o: %.c $(HEADER) $(PRINTF_HEADER)
 	gcc $(FLAG) -o $@ -I$(INCLUDES) -c $<
 
 clean:
-	/bin/rm -f $(OUT)
+	/bin/rm -f $(OUT) $(OUT_PRINTF)
 
 fclean: clean
 	/bin/rm -f $(NAME)

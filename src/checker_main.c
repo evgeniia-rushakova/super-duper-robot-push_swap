@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/checker.h"
+#include "checker.h"
 
 
 /*сесть написать все команды
@@ -20,35 +20,39 @@
 как завершать программу через кнтрл д?
 в конце в зависимости от результата получилось или нет вернуть ОК или КО
 начать писать сам пушсвап лол*/
-
+/*
 void		print_lst(t_lst *head)
 {
 	while (head)
 	{
-		printf("%i ", head->num);
+		ft_printf("%i ", head->num);
 		head = head->next;
 	}
 }
-
-t_lst 		*create_data(t_lst *first, int ac, char **av, int stack)
+*/
+t_stk 		*create_data(t_stk *first, int ac, char **av, int stack)
 {
 	int i;
-	t_lst *head;
+	t_stk *head;
 
 	i = 2;
-	if(!(first = malloc(sizeof(t_lst))))
+	if(!(first = malloc(sizeof(t_stk))))
 		return (NULL);
 	if (stack == 1)
 		first->num = ft_atoi(av[1]);
+	else
+		first->num = 0;
 	first->next = NULL;
 	head = first;
 	while (i < ac)
 	{
 
-		first->next = malloc(sizeof(t_lst));
+		first->next = malloc(sizeof(t_stk));
 		first->next->head = head;
 		if (stack == 1)
 			first->next->num = ft_atoi(av[i]);
+		else
+			first->next->num = 0;
 		first->next->next = NULL;
 		first = first->next;
 		i++;
@@ -56,10 +60,11 @@ t_lst 		*create_data(t_lst *first, int ac, char **av, int stack)
 	return (head);
 }
 
-int 		check_order(t_lst *first, int ac)
+
+int 		check_order(t_stk *first, int ac)
 {
 	int i;
-	t_lst *tmp;
+	t_stk *tmp;
 
 	tmp = first;
 	i = 0;
@@ -80,46 +85,54 @@ int 		check_order(t_lst *first, int ac)
 	return (-1);
 }
 
+ void       error_out(void)
+{
+	ft_printf("error\n");
+	exit(1);
+}
+
+t_pushswap        *create_stacks(t_pushswap *ps, int ac, char **av)
+{
+ 	if(!(ps = malloc(sizeof(t_pushswap))))
+ 	    error_out();
+ 	ps->a = create_data(ps->a, ac, av, 1);
+ 	ps->b = create_data(ps->b, ac, av, 0);
+ 	if (!ps->a || !ps->b)
+ 		error_out();
+	ps->quant_nums = ac;
+ 	ps->a->head = ps->a;
+ 	ps->b->head = ps->b;
+	return (ps);
+}
+
 int 		main(int ac, char **av)
 {
 	int n;
-	char buf[100];
-	t_lst *first;
-	t_lst *second;
-	first = NULL;
-	second = NULL;
+	char buf[50];
+	t_pushswap *ps;
 	if (ac <= 1)
 	{
-		printf("no arguments.\n");//DELETE
+		ft_printf("no arguments.\n");//DELETE
 		exit(1);
 	}
 	if (check_validity(ac, av) == 1)
 	{
-		first = create_data(first, ac, av, 1);
-		second = create_data(second, ac, av, 2);
-		if (!first || !second)
-		{
-			printf("error\n");
-			exit(1);
-		}
-		//print_lst(first);
-		while ((n = read (0, buf, sizeof(buf))) > 1)//////////////////////here
+		if (!(ps = create_stacks(ps, ac, av)))
+			error_out();
+		while ((n = read (0, buf, sizeof(buf))) > 1)
 		{
 			buf[n] = '\0';
 			if (check_instructions(buf) != 1)
-			{
-				printf("error\n");
-				exit(1);
-			}
+				error_out();
 			else
-				execute_instruction(first, second, buf);
+				execute_instruction(ps, buf);
 		}
-		if (check_order(first, ac) == 1)
-			printf("OK\n");
+		if (check_order(ps, ac) == 1)
+			ft_printf("OK\n");
 		else
-			printf("KO\n");
+			ft_printf("KO\n");
 	}
 	else
-		printf("error\n");
+		error_out();
 	return (0);
 }

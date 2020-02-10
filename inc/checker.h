@@ -13,7 +13,7 @@
 #ifndef CHECKER_H
 #define CHECKER_H
 
-# include "../libft/includes/libft.h"
+# include "libft.h"
 # include <stdarg.h>
 # include <string.h>
 # include <stdio.h>
@@ -21,19 +21,26 @@
 # include <float.h>
 #include <fcntl.h>
 
-typedef struct s_lst
+typedef struct          s_stk
 {
-	 int				num;
-	struct s_lst		*head;
-	struct s_lst		*next;
-}						t_lst;
+	int                 num;
+	struct s_stk        *head;
+	struct s_stk        *next;
+}                       t_stk;
+
+typedef struct          s_ps
+{
+	int                 quant_nums;
+	t_stk               *a;
+	t_stk               *b;
+}                       t_pushswap;
 
 
 int 		check_validity(int ac, char **av);
 int 		check_duplicates(int ac, char **av);
 int 		check_nums(int ac, char **av);
 int 		check_instructions(char *av);
-t_lst 		*create_data(t_lst *first, int ac, char **av, int stack);
-void		execute_instruction(t_lst *first, t_lst *second, char *cmd);
+//t_stk 		*create_data(t_stk *first, int ac, char **av, int stack);
+void		execute_instruction(t_pushswap *ps, char *cmd);
 
 #endif
