@@ -35,12 +35,21 @@ typedef struct          s_ps
 	t_stk               *b;
 }                       t_pushswap;
 
+int             check_order_args(int ac,char **av);
+t_stk           *create_data(t_stk *first, int ac, char **av, char stack);
+int             check_order(t_pushswap *ps);
+void            error_out(void);
+t_pushswap      *create_stacks(t_pushswap *ps, int ac, char **av);
+int             main(int ac, char **av);
+int             check_validity(int ac, char **av);
+int             check_instructions(char *av);
+void            execute_instruction(t_pushswap *ps, char *cmd);
+void            print_stk(t_stk *head, int stack);
 
-int 		check_validity(int ac, char **av);
-int 		check_duplicates(int ac, char **av);
-int 		check_nums(int ac, char **av);
-int 		check_instructions(char *av);
-//t_stk 		*create_data(t_stk *first, int ac, char **av, int stack);
-void		execute_instruction(t_pushswap *ps, char *cmd);
-
+/*
+ * tools.c
+ */
+t_stk            *push(t_stk *head, t_stk *new_head);
+t_stk           *pop(t_stk *head, t_pushswap *ps);
+t_stk           *remove_elem(t_stk *elem);
 #endif

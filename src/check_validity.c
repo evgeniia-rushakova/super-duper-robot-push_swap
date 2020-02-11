@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/checker.h"
+#include "checker.h"
 
 int 		check_duplicates(int ac, char **av)
 {
@@ -72,11 +72,27 @@ int 		check_instructions(char *av)
 	return (0);
 }
 
+int             check_order_args(int ac,char **av)
+{
+	int i;
+
+	i = 1;
+	while (i < ac)
+	{
+		if (i + 1 < ac && ft_atoi(av[i]) > ft_atoi(av[i + 1]))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 int 		check_validity(int ac, char **av)
 {
 	if (check_nums(ac, av) == 0)
 		return (0);
 	if (check_duplicates(ac, av) == 0)
+		return (0);
+	if (check_order_args(ac, av) == 0)
 		return (0);
 	return (1);
 }

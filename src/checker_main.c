@@ -20,17 +20,22 @@
 как завершать программу через кнтрл д?
 в конце в зависимости от результата получилось или нет вернуть ОК или КО
 начать писать сам пушсвап лол*/
-/*
-void		print_lst(t_lst *head)
+
+void		print_stk(t_stk *head, int stack)
 {
+	if (stack == 1)
+		ft_printf("stack A is: ");
+	else if (stack == 2)
+		ft_printf("stack B is: ");
 	while (head)
 	{
 		ft_printf("%i ", head->num);
 		head = head->next;
 	}
+	ft_printf("\n");
 }
-*/
-t_stk 		*create_data(t_stk *first, int ac, char **av, int stack)
+
+t_stk 		*create_data(t_stk *first, int ac, char **av, char stack)
 {
 	int i;
 	t_stk *head;
@@ -38,21 +43,20 @@ t_stk 		*create_data(t_stk *first, int ac, char **av, int stack)
 	i = 2;
 	if(!(first = malloc(sizeof(t_stk))))
 		return (NULL);
-	if (stack == 1)
-		first->num = ft_atoi(av[1]);
-	else
-		first->num = 0;
+	first->head = first;
 	first->next = NULL;
 	head = first;
+	if (stack == 'b')
+	{
+		first->num = INT_MIN;
+		return (first);
+	}
+	first->num = ft_atoi(av[1]);
 	while (i < ac)
 	{
-
 		first->next = malloc(sizeof(t_stk));
 		first->next->head = head;
-		if (stack == 1)
-			first->next->num = ft_atoi(av[i]);
-		else
-			first->next->num = 0;
+		first->next->num = ft_atoi(av[i]);
 		first->next->next = NULL;
 		first = first->next;
 		i++;
@@ -61,28 +65,22 @@ t_stk 		*create_data(t_stk *first, int ac, char **av, int stack)
 }
 
 
-int 		check_order(t_stk *first, int ac)
+int 		check_order(t_pushswap *ps)
 {
-	int i;
 	t_stk *tmp;
-
-	tmp = first;
-	i = 0;
-	while (tmp)
+	tmp = ps->a->head;
+	while (tmp && tmp->next)
 	{
-		i++;
+		if (tmp->num > tmp->next->num)
+			return (-1);
 		tmp = tmp->next;
 	}
-	if (i != ac)
+	/*
+	tmp = ps->b;
+	if (ps->b)
 		return (-1);
-	else
-		while (first && first->next)
-		{
-			if (first->num > first->next->num)
-				return (-1);
-			first = first->next;
-		}
-	return (-1);
+	 */
+	return (1);
 }
 
  void       error_out(void)
@@ -95,8 +93,8 @@ t_pushswap        *create_stacks(t_pushswap *ps, int ac, char **av)
 {
  	if(!(ps = malloc(sizeof(t_pushswap))))
  	    error_out();
- 	ps->a = create_data(ps->a, ac, av, 1);
- 	ps->b = create_data(ps->b, ac, av, 0);
+ 	ps->a = create_data(ps->a, ac, av, 'a');
+ 	ps->b = create_data(ps->b, ac, av, 'b');
  	if (!ps->a || !ps->b)
  		error_out();
 	ps->quant_nums = ac;
@@ -110,6 +108,8 @@ int 		main(int ac, char **av)
 	int n;
 	char buf[50];
 	t_pushswap *ps;
+
+	ps = NULL;
 	if (ac <= 1)
 	{
 		ft_printf("no arguments.\n");//DELETE
@@ -127,7 +127,7 @@ int 		main(int ac, char **av)
 			else
 				execute_instruction(ps, buf);
 		}
-		if (check_order(ps, ac) == 1)
+		if (check_order(ps) == 1)
 			ft_printf("OK\n");
 		else
 			ft_printf("KO\n");
@@ -136,3 +136,4 @@ int 		main(int ac, char **av)
 		error_out();
 	return (0);
 }
+//////////ошибки через врайт 2
