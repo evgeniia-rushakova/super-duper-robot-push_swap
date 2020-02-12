@@ -49,7 +49,8 @@ void            print_stk(t_stk *head, int stack);
 /*
  * tools.c
  */
-t_stk            *push(t_stk *head, t_stk *new_head);
+t_stk           *push(t_stk *head, t_stk *new_head);
 t_stk           *pop(t_stk *head, t_pushswap *ps);
 t_stk           *remove_elem(t_stk *elem);
+void            change_head(t_stk *stack, t_stk *new_head);
 #endif

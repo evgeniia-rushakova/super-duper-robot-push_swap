@@ -23,16 +23,22 @@
 
 void		print_stk(t_stk *head, int stack)
 {
-	if (stack == 1)
-		ft_printf("stack A is: ");
-	else if (stack == 2)
-		ft_printf("stack B is: ");
-	while (head)
+	if (!head)
+		ft_printf("Stack %c is empty.\n", stack == 1 ? 'A' : 'B');
+	else
 	{
-		ft_printf("%i ", head->num);
-		head = head->next;
+		if (stack == 1)
+			ft_printf("stack A is: ");
+		else if (stack == 2)
+			ft_printf("stack B is: ");
+		while (head)
+		{
+			ft_printf("%i ", head->num);
+			head = head->next;
+		}
+		ft_printf("\n");
 	}
-	ft_printf("\n");
+
 }
 
 t_stk 		*create_data(t_stk *first, int ac, char **av, char stack)
@@ -43,14 +49,15 @@ t_stk 		*create_data(t_stk *first, int ac, char **av, char stack)
 	i = 2;
 	if(!(first = malloc(sizeof(t_stk))))
 		return (NULL);
+	if (stack == 'b')
+	{
+		first->head = NULL;
+		first->next = NULL;
+		return (first);
+	}
 	first->head = first;
 	first->next = NULL;
 	head = first;
-	if (stack == 'b')
-	{
-		first->num = INT_MIN;
-		return (first);
-	}
 	first->num = ft_atoi(av[1]);
 	while (i < ac)
 	{
@@ -75,11 +82,8 @@ int 		check_order(t_pushswap *ps)
 			return (-1);
 		tmp = tmp->next;
 	}
-	/*
-	tmp = ps->b;
-	if (ps->b)
+	if (ps->b->head)
 		return (-1);
-	 */
 	return (1);
 }
 
@@ -95,11 +99,10 @@ t_pushswap        *create_stacks(t_pushswap *ps, int ac, char **av)
  	    error_out();
  	ps->a = create_data(ps->a, ac, av, 'a');
  	ps->b = create_data(ps->b, ac, av, 'b');
- 	if (!ps->a || !ps->b)
+ 	if (!ps->a)
  		error_out();
 	ps->quant_nums = ac;
  	ps->a->head = ps->a;
- 	ps->b->head = ps->b;
 	return (ps);
 }
 
