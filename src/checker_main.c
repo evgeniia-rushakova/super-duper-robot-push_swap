@@ -23,7 +23,7 @@
 
 void		print_stk(t_stk *head, int stack)
 {
-	if (!head)
+	if (!head || !head->head)
 		ft_printf("Stack %c is empty.\n", stack == 1 ? 'A' : 'B');
 	else
 	{
@@ -38,7 +38,6 @@ void		print_stk(t_stk *head, int stack)
 		}
 		ft_printf("\n");
 	}
-
 }
 
 t_stk 		*create_data(t_stk *first, int ac, char **av, char stack)

@@ -19,51 +19,46 @@
  */
 t_stk            *push(t_stk *head, t_stk *new_head)//vstavit element v golovu spiska
 {
-	//new_head->head = new_head;
-	new_head->next = head;
-	new_head->head = new_head;
-	/*while (head)
+	if (!head)
+    {
+        head = new_head;
+        head->head = new_head;
+        head->next = NULL;
+    }
+	else
 	{
-		head->head = new_head;
-		head = head->next;
-	}*/
-	change_head(head, new_head);
+        new_head->next = head;
+        new_head->head = new_head;
+        change_head(head, new_head);
+    }
 	return (new_head);
 }
 
 t_stk       *pop(t_stk *head, t_pushswap *ps)//leak?
 {
 	t_stk *new_head;
-	//t_stk *tmp;
 
 	new_head = head->next;
-/*	tmp = head;
-	while (tmp)
-	{
-		tmp->head = new_head;
-		tmp = tmp->next;
-	}*/
 	ps->a = new_head;
 	head->next = NULL;
 	return (head);
 }
 
-t_stk       *remove_elem(t_stk *elem)///TEST
+t_stk       *remove_elem(t_stk *elem)
 {
 	t_stk *tmp;
 
 	tmp = elem->head;
-	//if (tmp->next)
-	//	change_head(tmp->next, tmp);
 	while(tmp)
 	{
 		if (tmp->next == elem)
 			break;
 		tmp = tmp->next;
 	}
-	if (tmp && tmp->next && tmp->next->next)
+	if (tmp && tmp->next)
 		tmp->next = tmp->next->next;
 	elem->next = NULL;
+	elem->head = NULL;
 	return (elem);
 }
 

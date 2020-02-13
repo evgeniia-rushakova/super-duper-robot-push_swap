@@ -20,14 +20,9 @@ void		ps_sa(t_pushswap *ps)/*sa : swap a - swap the first 2 elements at the top 
 	if (ps->a->head && ps->a->head->next)///dobavit uslovie na 1 element
 	{
 		if((tmp = remove_elem(ps->a->head->next)))
-		{
-			tmp = push(ps->a->head, tmp);
-			//change_head(ps->a, tmp);
-		}
+            ps->a = push(ps->a->head, tmp);
 	}
-	ft_printf("After SA:\n");
-	print_stk(ps->a->head,1);
-	print_stk(ps->b->head, 2);
+	ft_printf("SA:\n");
 }
 
 void		ps_sb(t_pushswap *ps)/*sb : swap b - swap the first 2 elements at the top of stack b. Do nothing if there
@@ -38,14 +33,9 @@ void		ps_sb(t_pushswap *ps)/*sb : swap b - swap the first 2 elements at the top 
 	if (ps->b->head && ps->b->head->next)///dobavit uslovie na 1 element
 	{
 		if ((tmp = remove_elem(ps->b->head->next)))
-		{
-			tmp = push(ps->b->head, tmp);
-			//change_head(ps->b, tmp);
-		}
+			ps->b = push(ps->b->head, tmp);
 	}
-	ft_printf("After SB:\n");
-	print_stk(ps->a->head,1);
-	print_stk(ps->b->head, 2);
+	ft_printf("SB:\n");
 
 }
 
@@ -53,9 +43,7 @@ void		ps_ss(t_pushswap *ps)/*ss : sa and sb at the same time.*/
 {
 	ps_sa(ps);
 	ps_sb(ps);
-	ft_printf("After SS:\n");
-	print_stk(ps->a->head,1);
-	print_stk(ps->b->head, 2);
+	ft_printf("SS:\n");
 }
 
 void		ps_pa(t_pushswap *ps)/* pa : push a - take the first element at the top of b and put it at the top of a. Do
@@ -69,14 +57,11 @@ nothing if b is empty. */
 		tmp_new_head = ps->b->head->next;
 		if ((tmp = remove_elem(ps->b->head)))
 		{
-			//if (tmp_new_head = ps->b->head->next)
 			push(ps->a, tmp);
 			change_head(ps->a, tmp);
 		}
 	}
-	ft_printf("After PA:\n");
-	print_stk(ps->a->head,1);
-	print_stk(ps->b->head, 2);
+	ft_printf("PA:\n");
 }
 
 void		ps_pb(t_pushswap *ps)/* pb : push b - take the first element at the top of a and put it at the top of b. Do
@@ -88,21 +73,17 @@ nothing if a is empty.*/
 	if (ps->a->head)
 	{
 		head_tmp = ps->a->head->next;
+
 		if ((tmp = remove_elem(ps->a->head)))
 		{
-			change_head(head_tmp, head_tmp);
+            ps->a->head = head_tmp;
+            change_head(head_tmp, head_tmp);
 			ps->a = head_tmp;
-			push(ps->b->head, tmp);
-			change_head(ps->b->head, tmp);
+			ps->b = push(ps->b, tmp);
+			change_head(ps->b, tmp);
 		}
 	}
-	ft_printf("After PB:\n");
-	print_stk(ps->a->head,1);
-	print_stk(ps->b->head, 2);
-	//удалить элемент а из стека
-	//убрать голову у элемента
-	//поставить элемент перед хедом б
-	//сменить голову у всех элементов б
+	ft_printf("PB:\n");
 }
 
 void		ps_ra(t_pushswap *ps)/*ra : rotate a - shift up all elements of stack a by 1. The first element becomes
@@ -141,30 +122,38 @@ void		ps_rrr(t_pushswap *ps)/* rrr : rra and rrb at the same time. */
 
 void		execute_instruction(t_pushswap *ps, char *cmd)
 {
-	ft_printf("before:\n");
-	print_stk(ps->a->head,1);
-	print_stk(ps->b->head, 2);
+
+    write(1, "\x1b[32m", 5);
+    ft_printf("before:\n");
+    print_stk(ps->a,1);
+    print_stk(ps->b, 2);
+    write(1, "\x1b[0m", 5);
 
 	if (ft_strequ(cmd, "sa\n") == 1)
 		ps_sa(ps);
-	if (ft_strequ(cmd, "sb\n") == 1)
+	else if (ft_strequ(cmd, "sb\n") == 1)
 		ps_sb(ps);
-	if (ft_strequ(cmd, "ss\n") == 1)
+	else if (ft_strequ(cmd, "ss\n") == 1)
 		ps_ss(ps);
-	if (ft_strequ(cmd, "pa\n") == 1)
+	else if (ft_strequ(cmd, "pa\n") == 1)
 		ps_pa(ps);
-	if (ft_strequ(cmd, "pb\n") == 1)
+	else if (ft_strequ(cmd, "pb\n") == 1)
 		ps_pb(ps);
-	if (ft_strequ(cmd, "ra\n") == 1)
+	else if (ft_strequ(cmd, "ra\n") == 1)
 		ps_ra(ps);
-	if (ft_strequ(cmd, "rb\n") == 1)
+	else if (ft_strequ(cmd, "rb\n") == 1)
 		ps_rb(ps);
-	if (ft_strequ(cmd, "rr\n") == 1)
+	else if (ft_strequ(cmd, "rr\n") == 1)
 		ps_rr(ps);
-	if (ft_strequ(cmd, "rra\n") == 1)
+	else if (ft_strequ(cmd, "rra\n") == 1)
 		ps_rra(ps);
-	if (ft_strequ(cmd, "rrb\n") == 1)
+	else if (ft_strequ(cmd, "rrb\n") == 1)
 		ps_rrb(ps);
-	if (ft_strequ(cmd, "rrr\n") == 1)
+	else if (ft_strequ(cmd, "rrr\n") == 1)
 		ps_rrr(ps);
+	write(1, "\x1b[31m", 5);
+    ft_printf("after:\n");
+    print_stk(ps->a,1);
+    print_stk(ps->b, 2);
+    write(1, "\x1b[0m", 5);
 }
