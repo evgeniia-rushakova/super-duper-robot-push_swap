@@ -29,7 +29,7 @@ t_stk            *push(t_stk *head, t_stk *new_head)//vstavit element v golovu s
 	{
         new_head->next = head;
         new_head->head = new_head;
-        change_head(head, new_head);
+        //change_head(head, new_head);
     }
 	return (new_head);
 }
@@ -75,5 +75,18 @@ void        change_head(t_stk *stack, t_stk *new_head)
 			tmp = tmp->next;
 		}
 	}
+}
+
+int         lst_size(t_stk *head)
+{
+    int i;
+
+    i = 0;
+    while (head)
+    {
+        head = head->next;
+        i++;
+    }
+    return (0);
 }
 //поменять функцию изменения головы потому что надо перекидывться элементами из А в Б

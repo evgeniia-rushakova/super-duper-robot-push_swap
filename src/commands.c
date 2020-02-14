@@ -22,6 +22,8 @@ void		ps_sa(t_pushswap *ps)/*sa : swap a - swap the first 2 elements at the top 
 		if((tmp = remove_elem(ps->a->head->next)))
             ps->a = push(ps->a->head, tmp);
 	}
+    ps->a->head = ps->a;
+    ps->b->head = ps->b;
 	ft_printf("SA:\n");
 }
 
@@ -35,6 +37,8 @@ void		ps_sb(t_pushswap *ps)/*sb : swap b - swap the first 2 elements at the top 
 		if ((tmp = remove_elem(ps->b->head->next)))
 			ps->b = push(ps->b->head, tmp);
 	}
+    ps->a->head = ps->a;
+    ps->b->head = ps->b;
 	ft_printf("SB:\n");
 
 }
@@ -43,6 +47,7 @@ void		ps_ss(t_pushswap *ps)/*ss : sa and sb at the same time.*/
 {
 	ps_sa(ps);
 	ps_sb(ps);
+
 	ft_printf("SS:\n");
 }
 
@@ -61,6 +66,8 @@ nothing if b is empty. */
 			change_head(ps->a, tmp);
 		}
 	}
+    ps->a->head = ps->a;
+    ps->b->head = ps->b;
 	ft_printf("PA:\n");
 }
 
@@ -72,17 +79,21 @@ nothing if a is empty.*/
 
 	if (ps->a->head)
 	{
-		head_tmp = ps->a->head->next;
-
+		head_tmp = ps->a->next;
 		if ((tmp = remove_elem(ps->a->head)))
 		{
-            ps->a->head = head_tmp;
-            change_head(head_tmp, head_tmp);
+            ps->a = head_tmp;
+            //change_head(head_tmp, head_tmp);
 			ps->a = head_tmp;
-			ps->b = push(ps->b, tmp);
-			change_head(ps->b, tmp);
+			if (ps->b->head)
+			    ps->b = push(ps->b, tmp);
+            else
+                ps->b = tmp;
+			//change_head(ps->b, tmp);
 		}
 	}
+	ps->a->head = ps->a;
+	ps->b->head = ps->b;
 	ft_printf("PB:\n");
 }
 
