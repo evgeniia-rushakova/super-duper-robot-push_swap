@@ -74,14 +74,18 @@ t_stk 		*create_data(t_stk *first, int ac, char **av, char stack)
 int 		check_order(t_pushswap *ps)
 {
 	t_stk *tmp;
-	tmp = ps->a->head;
+
+	if (!ps->a)
+        return (-1);
+    tmp = ps->a->head;
 	while (tmp && tmp->next)
 	{
 		if (tmp->num > tmp->next->num)
 			return (-1);
 		tmp = tmp->next;
 	}
-	if (ps->b->head)
+
+	if (!ps->b || (ps->b && ps->b->head == NULL && ps->b->next == NULL))
 		return (-1);
 	return (1);
 }

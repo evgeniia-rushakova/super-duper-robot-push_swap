@@ -69,7 +69,7 @@ nothing if b is empty. */
         if ((tmp = remove_elem(ps->b->head)))
         {
             ps->b = head_tmp;
-            if (ps->a)
+            if (ps->a && ps->a->head)
                 ps->a = push(ps->a, tmp);
             else
                 ps->a = tmp;
@@ -100,7 +100,7 @@ nothing if a is empty.*/
 		if ((tmp = remove_elem(ps->a->head)))
 		{
             ps->a = head_tmp;
-			if (ps->b)
+			if (ps->b && ps->b->head)
 			    ps->b = push(ps->b, tmp);
 			else
                 ps->b = tmp;
@@ -116,7 +116,6 @@ nothing if a is empty.*/
             change_head(ps->b->head, ps->b);
         }
 	}
-
 	ft_printf("PB:\n");
 }
 
@@ -124,34 +123,40 @@ void		ps_ra(t_pushswap *ps)/*ra : rotate a - shift up all elements of stack a by
 the last one.  */
 {
 	(void)ps;
+    ft_printf("RA:\n");
 }
 
 void		ps_rb(t_pushswap *ps)/*rb : rotate b - shift up all elements of stack b by 1. The first element becomes
 the last one. */
 {
 	(void)ps;
+    ft_printf("RB:\n");
 }
 
 void		ps_rr(t_pushswap *ps)/* rr : ra and rb at the same time.*/
 {
 	(void)ps;
+    ft_printf("RR:\n");
 }
 
 void		ps_rra(t_pushswap *ps)/*rra : reverse rotate a - shift down all elements of stack a by 1. The last element
 becomes the first one. */
 {
 	(void)ps;
+    ft_printf("RRA:\n");
 }
 
 void		ps_rrb(t_pushswap *ps)/*rrb : reverse rotate b - shift down all elements of stack b by 1. The last element
 becomes the first one. */
 {
 	(void)ps;
+    ft_printf("RRB:\n");
 }
 
 void		ps_rrr(t_pushswap *ps)/* rrr : rra and rrb at the same time. */
 {
 	(void)ps;
+    ft_printf("RRR:\n");
 }
 
 void		execute_instruction(t_pushswap *ps, char *cmd)
