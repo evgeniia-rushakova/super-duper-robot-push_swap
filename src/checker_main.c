@@ -46,16 +46,14 @@ t_stk 		*create_data(t_stk *first, int ac, char **av, char stack)
 	t_stk *head;
 
 	i = 2;
-
-	if(!(first = malloc(sizeof(t_stk))))
-		return (NULL);
+    if(!(first = malloc(sizeof(t_stk))))
+        return (NULL);
 	if (stack == 'b')
 	{
 		first->head = NULL;
 		first->next = NULL;
 		return (first);
 	}
-
 	first->head = first;
 	first->next = NULL;
 	head = first;

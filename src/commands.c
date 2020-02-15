@@ -17,13 +17,16 @@ void		ps_sa(t_pushswap *ps)/*sa : swap a - swap the first 2 elements at the top 
 {
 	t_stk *tmp;
 
-	if (ps->a->head && ps->a->head->next)///dobavit uslovie na 1 element
+	if (ps->a && ps->a->head)
 	{
-		if((tmp = remove_elem(ps->a->head->next)))
+        if ((tmp = remove_elem(ps->a->head->next)))
             ps->a = push(ps->a->head, tmp);
-	}
-    ps->a->head = ps->a;
-    ps->b->head = ps->b;
+        if (ps->a)
+        {
+            ps->a->head = ps->a;
+            change_head(ps->a->head, ps->a);
+        }
+    }
 	ft_printf("SA:\n");
 }
 
@@ -32,13 +35,16 @@ void		ps_sb(t_pushswap *ps)/*sb : swap b - swap the first 2 elements at the top 
 {
 	t_stk *tmp;
 
-	if (ps->b->head && ps->b->head->next)///dobavit uslovie na 1 element
+	if (ps->b && ps->b->head)///dobavit uslovie na 1 element
 	{
 		if ((tmp = remove_elem(ps->b->head->next)))
 			ps->b = push(ps->b->head, tmp);
+        if(ps->b)
+        {
+            ps->b->head = ps->b;
+            change_head(ps->b->head, ps->b);
+        }
 	}
-    ps->a->head = ps->a;
-    ps->b->head = ps->b;
 	ft_printf("SB:\n");
 
 }
@@ -54,20 +60,31 @@ void		ps_ss(t_pushswap *ps)/*ss : sa and sb at the same time.*/
 void		ps_pa(t_pushswap *ps)/* pa : push a - take the first element at the top of b and put it at the top of a. Do
 nothing if b is empty. */
 {
-	t_stk *tmp;
-	t_stk *tmp_new_head;
+    t_stk *tmp;
+    t_stk *head_tmp;
 
-	if (ps->b->head)
-	{
-		tmp_new_head = ps->b->head->next;
-		if ((tmp = remove_elem(ps->b->head)))
-		{
-			push(ps->a, tmp);
-			change_head(ps->a, tmp);
-		}
-	}
-    ps->a->head = ps->a;
-    ps->b->head = ps->b;
+    if (ps->b && ps->b->head)
+    {
+        head_tmp = ps->b->head->next;
+        if ((tmp = remove_elem(ps->b->head)))
+        {
+            ps->b = head_tmp;
+            if (ps->a)
+                ps->a = push(ps->a, tmp);
+            else
+                ps->a = tmp;
+        }
+        if (ps->a)
+        {
+            ps->a->head = ps->a;
+            change_head(ps->a->head, ps->a);
+        }
+        if(ps->b)
+        {
+            ps->b->head = ps->b;
+            change_head(ps->b->head, ps->b);
+        }
+    }
 	ft_printf("PA:\n");
 }
 
@@ -77,23 +94,29 @@ nothing if a is empty.*/
 	t_stk *tmp;
 	t_stk *head_tmp;
 
-	if (ps->a->head)
+	if (ps->a && ps->a->head)
 	{
-		head_tmp = ps->a->next;
+		head_tmp = ps->a->head->next;
 		if ((tmp = remove_elem(ps->a->head)))
 		{
             ps->a = head_tmp;
-            //change_head(head_tmp, head_tmp);
-			ps->a = head_tmp;
-			if (ps->b->head)
+			if (ps->b)
 			    ps->b = push(ps->b, tmp);
-            else
+			else
                 ps->b = tmp;
-			//change_head(ps->b, tmp);
 		}
+        if (ps->a)
+        {
+            ps->a->head = ps->a;
+            change_head(ps->a->head, ps->a);
+        }
+        if(ps->b)
+        {
+            ps->b->head = ps->b;
+            change_head(ps->b->head, ps->b);
+        }
 	}
-	ps->a->head = ps->a;
-	ps->b->head = ps->b;
+
 	ft_printf("PB:\n");
 }
 
@@ -163,6 +186,7 @@ void		execute_instruction(t_pushswap *ps, char *cmd)
 	else if (ft_strequ(cmd, "rrr\n") == 1)
 		ps_rrr(ps);
 	write(1, "\x1b[31m", 5);
+
     ft_printf("after:\n");
     print_stk(ps->a,1);
     print_stk(ps->b, 2);
