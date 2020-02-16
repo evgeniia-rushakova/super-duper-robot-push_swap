@@ -42,7 +42,7 @@ int 		check_nums(int ac, char **av)
 	while (i < ac)
 	{
 		num = ft_atoi_long_long_uns(av[i]);
-		if (num > INT_MAX || num < INT8_MIN)
+		if (num > INT_MAX || num < INT_MIN)
 			return (0);
 		j = 0;
 		while (av[i][j] != '\0')

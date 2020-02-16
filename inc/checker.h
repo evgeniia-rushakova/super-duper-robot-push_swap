@@ -53,4 +53,5 @@ t_stk           *push(t_stk *head, t_stk *new_head);
 t_stk           *pop(t_stk *head, t_pushswap *ps);
 t_stk           *remove_elem(t_stk *elem);
 void            change_head(t_stk *stack, t_stk *new_head);
+t_stk       *append_elem(t_stk *stack, t_stk *elem);
 #endif

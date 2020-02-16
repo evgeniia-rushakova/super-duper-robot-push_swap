@@ -104,4 +104,5 @@ add_executable(super_duper_robot_push_swap
         libft/srcs/get_next_line.c
         src/check_validity.c
         src/checker_main.c
-        src/commands.c src/tools.c)
+        src/commands.c
+        src/tools.c)
