@@ -219,12 +219,11 @@ void		ps_rrr(t_pushswap *ps)/* rrr : rra and rrb at the same time. */
 
 void		execute_instruction(t_pushswap *ps, char *cmd)
 {
-
-  //  write(1, "\x1b[32m", 5);
+    write(1, "\x1b[32m", 5);
     ft_printf("before:\n");
     print_stk(ps->a,1);
     print_stk(ps->b, 2);
-  //  write(1, "\x1b[0m", 5);
+    write(1, "\x1b[0m", 5);
 
 	if (ft_strequ(cmd, "sa\n") == 1)
 		ps_sa(ps);
@@ -248,10 +247,10 @@ void		execute_instruction(t_pushswap *ps, char *cmd)
 		ps_rrb(ps);
 	else if (ft_strequ(cmd, "rrr\n") == 1)
 		ps_rrr(ps);
-//sa	write(1, "\x1b[31m", 5);
+	write(1, "\x1b[31m", 5);
 
     ft_printf("after:\n");
     print_stk(ps->a,1);
     print_stk(ps->b, 2);
-   // write(1, "\x1b[0m", 5);
+   write(1, "\x1b[0m", 5);
 }
