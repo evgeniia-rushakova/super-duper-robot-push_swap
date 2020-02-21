@@ -17,6 +17,22 @@
 При удалении элемента (pop) убирается первый, а головным становится тот,
  на который был указатель у этого объекта (следующий элемент). При этом значение убранного элемента возвращается.
  */
+
+int             find_lst_size(t_stk *head)
+{
+    int i;
+
+    i = 0;
+    if (!head)
+        return (0);
+    while (head)
+    {
+        i++;
+        head = head->next;
+    }
+    return (i);
+}
+
 t_stk            *push(t_stk *head, t_stk *new_head)//vstavit element v golovu spiska
 {
 	if (!head)
@@ -29,7 +45,6 @@ t_stk            *push(t_stk *head, t_stk *new_head)//vstavit element v golovu s
 	{
         new_head->next = head;
         new_head->head = new_head;
-        //change_head(head, new_head);
     }
 	return (new_head);
 }
@@ -60,6 +75,19 @@ t_stk       *remove_elem(t_stk *elem)
 	elem->next = NULL;
 	elem->head = NULL;
 	return (elem);
+}
+
+t_stk       *append_elem(t_stk *stack_head, t_stk *elem)
+{
+    t_stk *tmp;
+
+    tmp = stack_head;
+    while (tmp && tmp->next)
+        tmp = tmp->next;
+    tmp->next = elem;
+    elem->next = NULL;
+    elem->head = stack_head->head;
+    return (stack_head);
 }
 
 void        change_head(t_stk *stack, t_stk *new_head)

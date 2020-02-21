@@ -84,8 +84,9 @@ int 		check_order(t_pushswap *ps)
 			return (-1);
 		tmp = tmp->next;
 	}
-
-	if (!ps->b || (ps->b && ps->b->head == NULL && ps->b->next == NULL))
+	if (find_lst_size(ps->a->head) != ps->quant_nums)
+        return (-1);
+	if (ps->b->head != NULL || ps->b->next != NULL)
 		return (-1);
 	return (1);
 }
@@ -104,9 +105,31 @@ t_pushswap        *create_stacks(t_pushswap *ps, int ac, char **av)
  	ps->b = create_data(ps->b, ac, av, 'b');
  	if (!ps->a)
  		error_out();
-	ps->quant_nums = ac;
+	ps->quant_nums = ac - 1;
  	ps->a->head = ps->a;
 	return (ps);
+}
+
+void        free_ps(t_pushswap *ps)
+{
+    t_stk *tmp;
+
+    if (ps)
+    {
+        if (ps->a && ps->a->head)
+        {
+            tmp = ps->a->head->next;
+            ft_memdel((void **)ps->a->head);
+            ps->a->head = tmp;
+        }
+        if (ps->b && ps->b->head)
+        {
+            tmp = ps->b->head->next;
+            ft_memdel((void **)ps->b->head);
+            ps->b->head = tmp;
+        }
+        ft_memdel((void **)ps);
+    }
 }
 
 int 		main(int ac, char **av)
@@ -117,10 +140,7 @@ int 		main(int ac, char **av)
 
 	ps = NULL;
 	if (ac <= 1)
-	{
-		ft_printf("no arguments.\n");//DELETE
 		exit(1);
-	}
 	if (check_validity(ac, av) == 1)
 	{
 		if (!(ps = create_stacks(ps, ac, av)))
@@ -137,9 +157,9 @@ int 		main(int ac, char **av)
 			ft_printf("OK\n");
 		else
 			ft_printf("KO\n");
+		free_ps(ps);
 	}
 	else
 		error_out();
 	return (0);
 }
-//////////ошибки через врайт 2

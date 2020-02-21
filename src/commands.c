@@ -122,46 +122,103 @@ nothing if a is empty.*/
 void		ps_ra(t_pushswap *ps)/*ra : rotate a - shift up all elements of stack a by 1. The first element becomes
 the last one.  */
 {
-	(void)ps;
+    t_stk *tmp;
+    t_stk *head_tmp;
+
+    if (ps->a && ps->a->head)
+    {
+        head_tmp = ps->a->head->next;
+        if ((tmp = remove_elem(ps->a->head)))
+        {
+            ps->a = head_tmp;
+            if (ps->a)
+            {
+                ps->a->head = ps->a;
+                change_head(ps->a->head, ps->a);
+            }
+            append_elem(ps->a, tmp);
+        }
+    }
     ft_printf("RA:\n");
 }
 
 void		ps_rb(t_pushswap *ps)/*rb : rotate b - shift up all elements of stack b by 1. The first element becomes
 the last one. */
 {
-	(void)ps;
+    t_stk *tmp;
+    t_stk *head_tmp;
+
+    if (ps->b && ps->b->head)
+    {
+        head_tmp = ps->b->head->next;
+        if ((tmp = remove_elem(ps->b->head)))
+        {
+            ps->b = head_tmp;
+            if (ps->b)
+            {
+                ps->b->head = ps->b;
+                change_head(ps->b->head, ps->b);
+            }
+            append_elem(ps->b, tmp);
+        }
+    }
     ft_printf("RB:\n");
 }
 
 void		ps_rr(t_pushswap *ps)/* rr : ra and rb at the same time.*/
 {
-	(void)ps;
+	ps_ra(ps);
+	ps_rb(ps);
     ft_printf("RR:\n");
 }
 
 void		ps_rra(t_pushswap *ps)/*rra : reverse rotate a - shift down all elements of stack a by 1. The last element
 becomes the first one. */
 {
-	(void)ps;
+	t_stk *tmp;
+
+	if (ps->a && ps->a->head && ps->a->head->next)
+    {
+        tmp = ps->a->head;
+        while (tmp && tmp->next)
+            tmp = tmp->next;
+        if ((tmp = remove_elem(tmp)))
+        {
+            ps->a = push(ps->a, tmp);
+            change_head(ps->a->head, ps->a);
+        }
+    }
     ft_printf("RRA:\n");
 }
 
 void		ps_rrb(t_pushswap *ps)/*rrb : reverse rotate b - shift down all elements of stack b by 1. The last element
 becomes the first one. */
 {
-	(void)ps;
+    t_stk *tmp;
+
+    if (ps->b && ps->b->head && ps->b->head->next)
+    {
+        tmp = ps->b->head;
+        while (tmp && tmp->next)
+            tmp = tmp->next;
+        if ((tmp = remove_elem(tmp)))
+        {
+            ps->b = push(ps->b, tmp);
+            change_head(ps->b->head, ps->b);
+        }
+    }
     ft_printf("RRB:\n");
 }
 
 void		ps_rrr(t_pushswap *ps)/* rrr : rra and rrb at the same time. */
 {
-	(void)ps;
+	ps_rra(ps);
+	ps_rrb(ps);
     ft_printf("RRR:\n");
 }
 
 void		execute_instruction(t_pushswap *ps, char *cmd)
 {
-
     write(1, "\x1b[32m", 5);
     ft_printf("before:\n");
     print_stk(ps->a,1);
@@ -195,5 +252,5 @@ void		execute_instruction(t_pushswap *ps, char *cmd)
     ft_printf("after:\n");
     print_stk(ps->a,1);
     print_stk(ps->b, 2);
-    write(1, "\x1b[0m", 5);
+   write(1, "\x1b[0m", 5);
 }
