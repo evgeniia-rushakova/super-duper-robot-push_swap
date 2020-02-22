@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jslave <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/03 15:43:32 by jslave            #+#    #+#             */
-/*   Updated: 2020/02/03 15:43:40 by jslave           ###   ########.fr       */
+/*   Created: 2020/02/22 16:24:28 by jslave            #+#    #+#             */
+/*   Updated: 2020/02/22 16:24:36 by jslave           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-#define CHECKER_H
+
+#ifndef PUSHSWAP_H
+#define PUSHSWAP_H
 
 # include "libft.h"
 # include <stdarg.h>
@@ -35,24 +36,59 @@ typedef struct          s_ps
 	t_stk               *b;
 }                       t_pushswap;
 
+/*
+ * check_validity.c
+ */
 int             check_order_args(int ac,char **av);
-t_stk           *create_data(t_stk *first, int ac, char **av, char stack);
-int             check_order(t_pushswap *ps);
-void            error_out(void);
-t_pushswap      *create_stacks(t_pushswap *ps, int ac, char **av);
-int             main(int ac, char **av);
 int             check_validity(int ac, char **av);
 int             check_instructions(char *av);
-void            execute_instruction(t_pushswap *ps, char *cmd);
-void            print_stk(t_stk *head, int stack);
-
+int				check_nums(int ac, char **av);
+int				check_duplicates(int ac, char **av);
 /*
- * tools.c
+ * commands.c
+ */
+void			ps_sa(t_pushswap *ps);
+void			ps_sb(t_pushswap *ps);
+void			ps_pa(t_pushswap *ps);
+void			ps_pb(t_pushswap *ps);
+void			ps_ra(t_pushswap *ps);
+/*
+ * coomands_2.c
+ */
+void			ps_rr(t_pushswap *ps);
+void			ps_rrr(t_pushswap *ps);
+void			ps_ss(t_pushswap *ps);
+/*
+ * execute_instructions.c
+ */
+void        	execute_instruction(t_pushswap *ps, char *cmd);
+void			ps_rrb(t_pushswap *ps);
+void			ps_rra(t_pushswap *ps);
+void			ps_rb(t_pushswap *ps);
+/*
+ * utils_1.c
+ */
+t_stk           *create_data(t_stk *first, int ac, char **av, char stack);
+int             check_order(t_pushswap *ps);
+void            error_out(t_pushswap *ps);
+t_pushswap      *create_stacks(t_pushswap *ps, int ac, char **av);
+void			free_ps(t_pushswap *ps);
+/*
+ * utils_2.c
+ */
+void            print_stk(t_stk *head, int stack);
+/*
+ * lst_tools.c
  */
 t_stk           *push(t_stk *head, t_stk *new_head);
-t_stk           *pop(t_stk *head, t_pushswap *ps);
+//t_stk           *pop(t_stk *head, t_pushswap *ps);
 t_stk           *remove_elem(t_stk *elem);
 void            change_head(t_stk *stack, t_stk *new_head);
 t_stk           *append_elem(t_stk *stack, t_stk *elem);
 int             find_lst_size(t_stk *head);
+
+
+
+
+
 #endif

@@ -10,13 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
-/*
- * При проталкивании (push) добавляется новый элемент, указывающий на элемент,
- * бывший до этого головой. Новый элемент теперь становится головным.
-При удалении элемента (pop) убирается первый, а головным становится тот,
- на который был указатель у этого объекта (следующий элемент). При этом значение убранного элемента возвращается.
- */
+#include "pushswap.h"
 
 int             find_lst_size(t_stk *head)
 {
@@ -49,7 +43,7 @@ t_stk            *push(t_stk *head, t_stk *new_head)//vstavit element v golovu s
 	return (new_head);
 }
 
-t_stk       *pop(t_stk *head, t_pushswap *ps)//leak?
+/*t_stk       *pop(t_stk *head, t_pushswap *ps)//leak?
 {
 	t_stk *new_head;
 
@@ -58,7 +52,7 @@ t_stk       *pop(t_stk *head, t_pushswap *ps)//leak?
 	head->next = NULL;
 	return (head);
 }
-
+*/
 t_stk       *remove_elem(t_stk *elem)
 {
 	t_stk *tmp;
@@ -104,17 +98,3 @@ void        change_head(t_stk *stack, t_stk *new_head)
 		}
 	}
 }
-
-int         lst_size(t_stk *head)
-{
-    int i;
-
-    i = 0;
-    while (head)
-    {
-        head = head->next;
-        i++;
-    }
-    return (0);
-}
-//поменять функцию изменения головы потому что надо перекидывться элементами из А в Б

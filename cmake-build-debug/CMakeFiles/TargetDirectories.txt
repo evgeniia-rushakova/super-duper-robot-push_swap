@@ -1,3 +1,4 @@
 /Users/jslave/PUSH_SWAP/super-duper-robot-push_swap/cmake-build-debug/CMakeFiles/rebuild_cache.dir
 /Users/jslave/PUSH_SWAP/super-duper-robot-push_swap/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/jslave/PUSH_SWAP/super-duper-robot-push_swap/cmake-build-debug/CMakeFiles/super_duper_robot_push_swap.dir
+/Users/jslave/PUSH_SWAP/super-duper-robot-push_swap/cmake-build-debug/CMakeFiles/cmake_push_swap.dir
+/Users/jslave/PUSH_SWAP/super-duper-robot-push_swap/cmake-build-debug/CMakeFiles/cmake_checker.dir

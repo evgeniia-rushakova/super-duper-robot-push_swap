@@ -11,7 +11,9 @@
 # **************************************************************************** #
 
 
-NAME = checker
+NAME1 = checker
+
+NAME2 = pushswap
 
 LIBFT = libft
 
@@ -21,24 +23,35 @@ INCLUDES = inc/
 
 FLAGS =  -Wall -Wextra -Werror
 
-SRC = src/check_validity.c src/checker_main.c src/commands.c src/tools.c
+SRC1 = src/check_validity.c src/checker_main.c src/commands.c src/commands_2.c src/lst_tools.c src/utils_1.c src/utils_2.c src/execute_instructions.c
 
-OUT = $(SRC:%.c=%.o)
+SRC2 = src/check_validity.c src/pushswap_main.c src/commands.c src/commands_2.c src/lst_tools.c src/utils_1.c src/utils_2.c src/execute_instructions.c
 
-all: $(NAME)
+OUT1 = $(SRC1:%.c=%.o)
 
-$(NAME): $(OUT)
+OUT2 = $(SRC2:%.c=%.o)
+
+all: $(NAME1) $(NAME2)
+
+$(NAME1): $(OUT1)
 	make -C $(LIBFT)
-	gcc $(FLAGS) -o $(NAME) $(OUT) -L $(LIBFT) -lft
+	gcc $(FLAGS) -o $(NAME1) $(OUT1) -L $(LIBFT) -lft
+%.o: %.c
+	gcc $(FLAGS) -I $(LIBFT_INCLUDES) -I $(INCLUDES) -o $@ -c $<
+
+$(NAME2): $(OUT2)
+	gcc $(FLAGS) -o $(NAME2) $(OUT2) -L $(LIBFT) -lft
 %.o: %.c
 	gcc $(FLAGS) -I $(LIBFT_INCLUDES) -I $(INCLUDES) -o $@ -c $<
 
 clean:
-	/bin/rm -f $(OUT)
+	/bin/rm -f $(OUT1)
+	/bin/rm -f $(OUT2)
 	make -C $(LIBFT) clean
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	/bin/rm -f $(NAME1)
+	/bin/rm -f $(NAME2)
 	make -C $(LIBFT) fclean
 
 re: fclean all
