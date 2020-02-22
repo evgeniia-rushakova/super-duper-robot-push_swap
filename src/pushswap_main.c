@@ -12,11 +12,6 @@
 
 #include "pushswap.h"
 
-void pushswap(t_pushswap *ps)
-{
-	(void)ps;
-}
-
 int 		main(int ac, char **av)
 {
 //	int n;
@@ -42,7 +37,7 @@ int 		main(int ac, char **av)
 			ft_printf("OK\n");
 		else
 			ft_printf("KO\n");*/
-		pushswap(ps);
+		push_swap(ps);
 		free_ps(ps);
 	}
 	else

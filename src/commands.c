@@ -64,7 +64,10 @@ nothing if b is empty. */
             if (ps->a && ps->a->head)
                 ps->a = push(ps->a, tmp);
             else
-                ps->a = tmp;
+			{
+            	ft_memdel((void **)&ps->a);
+				ps->a = tmp;
+			}
         }
         if (ps->a)
         {
@@ -95,17 +98,20 @@ nothing if a is empty.*/
 			if (ps->b && ps->b->head)
 			    ps->b = push(ps->b, tmp);
 			else
-                ps->b = tmp;
+			{
+				ft_memdel((void **)&ps->b);
+				ps->b = tmp;
+			}
 		}
         if (ps->a)
         {
-            ps->a->head = ps->a;
-            change_head(ps->a->head, ps->a);
+        	ps->a->head = ps->a;
+        	change_head(ps->a->head, ps->a);
         }
         if(ps->b)
         {
-            ps->b->head = ps->b;
-            change_head(ps->b->head, ps->b);
+        	ps->b->head = ps->b;
+        	change_head(ps->b->head, ps->b);
         }
 	}
 	ft_printf("PB:\n");

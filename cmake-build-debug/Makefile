@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/2ECDDB80-E665-4F33-A087-78E1A2BBA8F5/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/F6AAC429-8F56-42A5-BCF7-7671B2DC3B17/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/2ECDDB80-E665-4F33-A087-78E1A2BBA8F5/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
+RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/F6AAC429-8F56-42A5-BCF7-7671B2DC3B17/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /Users/jslave/PUSH_SWAP/super-duper-robot-push_swap/cmake-bui
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/2ECDDB80-E665-4F33-A087-78E1A2BBA8F5/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/F6AAC429-8F56-42A5-BCF7-7671B2DC3B17/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/2ECDDB80-E665-4F33-A087-78E1A2BBA8F5/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/F6AAC429-8F56-42A5-BCF7-7671B2DC3B17/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -3100,6 +3100,33 @@ src/pushswap_main.c.s:
 	$(MAKE) -f CMakeFiles/cmake_push_swap.dir/build.make CMakeFiles/cmake_push_swap.dir/src/pushswap_main.c.s
 .PHONY : src/pushswap_main.c.s
 
+src/solution.o: src/solution.c.o
+
+.PHONY : src/solution.o
+
+# target to build an object file
+src/solution.c.o:
+	$(MAKE) -f CMakeFiles/cmake_push_swap.dir/build.make CMakeFiles/cmake_push_swap.dir/src/solution.c.o
+.PHONY : src/solution.c.o
+
+src/solution.i: src/solution.c.i
+
+.PHONY : src/solution.i
+
+# target to preprocess a source file
+src/solution.c.i:
+	$(MAKE) -f CMakeFiles/cmake_push_swap.dir/build.make CMakeFiles/cmake_push_swap.dir/src/solution.c.i
+.PHONY : src/solution.c.i
+
+src/solution.s: src/solution.c.s
+
+.PHONY : src/solution.s
+
+# target to generate assembly for a file
+src/solution.c.s:
+	$(MAKE) -f CMakeFiles/cmake_push_swap.dir/build.make CMakeFiles/cmake_push_swap.dir/src/solution.c.s
+.PHONY : src/solution.c.s
+
 src/utils_1.o: src/utils_1.c.o
 
 .PHONY : src/utils_1.o
@@ -3467,6 +3494,9 @@ help:
 	@echo "... src/pushswap_main.o"
 	@echo "... src/pushswap_main.i"
 	@echo "... src/pushswap_main.s"
+	@echo "... src/solution.o"
+	@echo "... src/solution.i"
+	@echo "... src/solution.s"
 	@echo "... src/utils_1.o"
 	@echo "... src/utils_1.i"
 	@echo "... src/utils_1.s"

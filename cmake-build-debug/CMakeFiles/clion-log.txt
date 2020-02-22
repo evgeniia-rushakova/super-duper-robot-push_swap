@@ -1,4 +1,4 @@
-/private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/2ECDDB80-E665-4F33-A087-78E1A2BBA8F5/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/jslave/PUSH_SWAP/super-duper-robot-push_swap
+/private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/F6AAC429-8F56-42A5-BCF7-7671B2DC3B17/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/jslave/PUSH_SWAP/super-duper-robot-push_swap
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /Users/jslave/PUSH_SWAP/super-duper-robot-push_swap/cmake-build-debug

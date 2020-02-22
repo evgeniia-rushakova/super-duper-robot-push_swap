@@ -32,6 +32,9 @@ typedef struct          s_stk
 typedef struct          s_ps
 {
 	int                 quant_nums;
+	int 				max;
+	int					min;
+	int					medium;
 	t_stk               *a;
 	t_stk               *b;
 }                       t_pushswap;
@@ -86,9 +89,8 @@ t_stk           *remove_elem(t_stk *elem);
 void            change_head(t_stk *stack, t_stk *new_head);
 t_stk           *append_elem(t_stk *stack, t_stk *elem);
 int             find_lst_size(t_stk *head);
-
-
-
-
-
+/*
+ * solution.c
+ */
+void			push_swap(t_pushswap *ps);
 #endif

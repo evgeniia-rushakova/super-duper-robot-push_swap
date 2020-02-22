@@ -57,7 +57,7 @@ int 		check_order(t_pushswap *ps)
 	}
 	if (find_lst_size(ps->a->head) != ps->quant_nums)
 		return (-1);
-	if (ps->b->head != NULL || ps->b->next != NULL)
+	if (ps->b && (ps->b->head != NULL || ps->b->next != NULL))
 		return (-1);
 	return (1);
 }
@@ -72,6 +72,9 @@ t_pushswap        *create_stacks(t_pushswap *ps, int ac, char **av)
 		error_out(ps);
 	ps->quant_nums = ac - 1;
 	ps->a->head = ps->a;
+	ps->max = 0;
+	ps->min = 0;
+	ps->medium = 0;
 	return (ps);
 }
 
@@ -87,16 +90,14 @@ void        free_ps(t_pushswap *ps)
 			ft_memdel((void **)&ps->a);
 			ps->a = tmp;
 		}
+		ft_memdel((void **)&ps->a);
 		while (ps->b)
 		{
 			tmp = ps->b->next;
 			ft_memdel((void **)&ps->b);
 			ps->b = tmp;
 		}
-		if (ps->a)
-			ft_memdel((void **)&ps->a);
-		if (ps->b)
-			ft_memdel((void **)&ps->b);
+		ft_memdel((void **)&ps->b);
 		ft_memdel((void **)&ps);
 	}
 }
