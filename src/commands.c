@@ -27,7 +27,8 @@ void		ps_sa(t_pushswap *ps)/*sa : swap a - swap the first 2 elements at the top 
             change_head(ps->a->head, ps->a);
         }
     }
-	ft_printf("SA:\n");
+	ps->instructions++;//del
+	ft_printf("sa\n");
 }
 
 void		ps_sb(t_pushswap *ps)/*sb : swap b - swap the first 2 elements at the top of stack b. Do nothing if there
@@ -45,7 +46,8 @@ void		ps_sb(t_pushswap *ps)/*sb : swap b - swap the first 2 elements at the top 
             change_head(ps->b->head, ps->b);
         }
 	}
-	ft_printf("SB:\n");
+	ps->instructions++;//del
+	ft_printf("sb\n");
 
 }
 
@@ -64,7 +66,10 @@ nothing if b is empty. */
             if (ps->a && ps->a->head)
                 ps->a = push(ps->a, tmp);
             else
-                ps->a = tmp;
+			{
+            	ft_memdel((void **)&ps->a);
+				ps->a = tmp;
+			}
         }
         if (ps->a)
         {
@@ -77,7 +82,8 @@ nothing if b is empty. */
             change_head(ps->b->head, ps->b);
         }
     }
-	ft_printf("PA:\n");
+	ps->instructions++;//del
+	ft_printf("pa\n");
 }
 
 void		ps_pb(t_pushswap *ps)/* pb : push b - take the first element at the top of a and put it at the top of b. Do
@@ -95,20 +101,24 @@ nothing if a is empty.*/
 			if (ps->b && ps->b->head)
 			    ps->b = push(ps->b, tmp);
 			else
-                ps->b = tmp;
+			{
+				ft_memdel((void **)&ps->b);
+				ps->b = tmp;
+			}
 		}
         if (ps->a)
         {
-            ps->a->head = ps->a;
-            change_head(ps->a->head, ps->a);
+        	ps->a->head = ps->a;
+        	change_head(ps->a->head, ps->a);
         }
         if(ps->b)
         {
-            ps->b->head = ps->b;
-            change_head(ps->b->head, ps->b);
+        	ps->b->head = ps->b;
+        	change_head(ps->b->head, ps->b);
         }
 	}
-	ft_printf("PB:\n");
+	ps->instructions++;//del
+	ft_printf("pb\n");
 }
 
 void		ps_ra(t_pushswap *ps)/*ra : rotate a - shift up all elements of stack a by 1. The first element becomes
@@ -131,5 +141,6 @@ the last one.  */
             append_elem(ps->a, tmp);
         }
     }
-    ft_printf("RA:\n");
+	ps->instructions++;//del
+    ft_printf("ra\n");
 }

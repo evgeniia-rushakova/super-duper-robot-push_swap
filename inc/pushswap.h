@@ -32,8 +32,12 @@ typedef struct          s_stk
 typedef struct          s_ps
 {
 	int                 quant_nums;
+	int 				max;
+	int					min;
+	int					medium;
 	t_stk               *a;
 	t_stk               *b;
+	int 				instructions;//DEL
 }                       t_pushswap;
 
 /*
@@ -76,7 +80,12 @@ void			free_ps(t_pushswap *ps);
 /*
  * utils_2.c
  */
-void            print_stk(t_stk *head, int stack);
+void			print_stk(t_stk *head, int stack);//del
+void			find_max_min_medium_nums(t_pushswap *ps);
+int				check_order_simple(t_pushswap *ps, char stack);
+int				find_steps_before_num(t_stk *stk, char start_end, int quant, int num);
+void			get_minimum_on_top(t_pushswap *ps);
+void			repeat_function(int times,t_pushswap *ps, void (*f)(t_pushswap *));
 /*
  * lst_tools.c
  */
@@ -86,9 +95,15 @@ t_stk           *remove_elem(t_stk *elem);
 void            change_head(t_stk *stack, t_stk *new_head);
 t_stk           *append_elem(t_stk *stack, t_stk *elem);
 int             find_lst_size(t_stk *head);
+/*
+ * solution.c
+ */
+void			push_swap(t_pushswap *ps);
 
-
-
-
+/*
+ * three_five_args.c
+ */
+void			sort_three_args(t_pushswap *ps, char stack);
+void			sort_five_max_args(t_pushswap *ps);
 
 #endif

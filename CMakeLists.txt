@@ -214,4 +214,4 @@ add_executable(cmake_push_swap
         src/execute_instructions.c
         src/commands_2.c
         src/utils_1.c
-        src/utils_2.c)
+        src/utils_2.c src/solution.c src/three_five_args.c)

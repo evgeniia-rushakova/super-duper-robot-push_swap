@@ -35,10 +35,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/2ECDDB80-E665-4F33-A087-78E1A2BBA8F5/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/BD60626A-1860-40DD-A1BD-DD00FCD4A3C7/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/2ECDDB80-E665-4F33-A087-78E1A2BBA8F5/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
+RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/BD60626A-1860-40DD-A1BD-DD00FCD4A3C7/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -76,12 +76,12 @@ preinstall:
 CMakeFiles/cmake_push_swap.dir/all:
 	$(MAKE) -f CMakeFiles/cmake_push_swap.dir/build.make CMakeFiles/cmake_push_swap.dir/depend
 	$(MAKE) -f CMakeFiles/cmake_push_swap.dir/build.make CMakeFiles/cmake_push_swap.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jslave/PUSH_SWAP/super-duper-robot-push_swap/cmake-build-debug/CMakeFiles --progress-num=51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100 "Built target cmake_push_swap"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jslave/PUSH_SWAP/super-duper-robot-push_swap/cmake-build-debug/CMakeFiles --progress-num=50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100 "Built target cmake_push_swap"
 .PHONY : CMakeFiles/cmake_push_swap.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/cmake_push_swap.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jslave/PUSH_SWAP/super-duper-robot-push_swap/cmake-build-debug/CMakeFiles 50
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jslave/PUSH_SWAP/super-duper-robot-push_swap/cmake-build-debug/CMakeFiles 51
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/cmake_push_swap.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jslave/PUSH_SWAP/super-duper-robot-push_swap/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/cmake_push_swap.dir/rule
@@ -103,12 +103,12 @@ CMakeFiles/cmake_push_swap.dir/clean:
 CMakeFiles/cmake_checker.dir/all:
 	$(MAKE) -f CMakeFiles/cmake_checker.dir/build.make CMakeFiles/cmake_checker.dir/depend
 	$(MAKE) -f CMakeFiles/cmake_checker.dir/build.make CMakeFiles/cmake_checker.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jslave/PUSH_SWAP/super-duper-robot-push_swap/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50 "Built target cmake_checker"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jslave/PUSH_SWAP/super-duper-robot-push_swap/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49 "Built target cmake_checker"
 .PHONY : CMakeFiles/cmake_checker.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/cmake_checker.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jslave/PUSH_SWAP/super-duper-robot-push_swap/cmake-build-debug/CMakeFiles 50
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jslave/PUSH_SWAP/super-duper-robot-push_swap/cmake-build-debug/CMakeFiles 49
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/cmake_checker.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jslave/PUSH_SWAP/super-duper-robot-push_swap/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/cmake_checker.dir/rule

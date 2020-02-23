@@ -32,7 +32,8 @@ the last one. */
             append_elem(ps->b, tmp);
         }
     }
-    ft_printf("RB:\n");
+	ps->instructions++;//del
+    ft_printf("rb\n");
 }
 
 void		ps_rra(t_pushswap *ps)/*rra : reverse rotate a - shift down all elements of stack a by 1. The last element
@@ -51,7 +52,8 @@ becomes the first one. */
             change_head(ps->a->head, ps->a);
         }
     }
-    ft_printf("RRA:\n");
+	ps->instructions++;//del
+    ft_printf("rra\n");
 }
 
 void		ps_rrb(t_pushswap *ps)/*rrb : reverse rotate b - shift down all elements of stack b by 1. The last element
@@ -70,7 +72,8 @@ becomes the first one. */
             change_head(ps->b->head, ps->b);
         }
     }
-    ft_printf("RRB:\n");
+    ps->instructions++;//del
+    ft_printf("rrb\n");
 }
 
 void		execute_instruction(t_pushswap *ps, char *cmd)

@@ -16,20 +16,22 @@ void		ps_rrr(t_pushswap *ps)/* rrr : rra and rrb at the same time. */
 {
     ps_rra(ps);
     ps_rrb(ps);
-    ft_printf("RRR:\n");
+	ps->instructions++;//del
+    ft_printf("rrr\n");
 }
 
 void		ps_rr(t_pushswap *ps)/* rr : ra and rb at the same time.*/
 {
     ps_ra(ps);
     ps_rb(ps);
-    ft_printf("RR:\n");
+	ps->instructions++;//del
+    ft_printf("rb\n");
 }
 
 void		ps_ss(t_pushswap *ps)/*ss : sa and sb at the same time.*/
 {
     ps_sa(ps);
     ps_sb(ps);
-
-    ft_printf("SS:\n");
+	ps->instructions++;//del
+    ft_printf("ss\n");
 }
