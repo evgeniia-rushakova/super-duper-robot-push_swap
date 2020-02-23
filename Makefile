@@ -25,7 +25,7 @@ FLAGS =  -Wall -Wextra -Werror
 
 SRC1 = src/check_validity.c src/checker_main.c src/commands.c src/commands_2.c src/lst_tools.c src/utils_1.c src/utils_2.c src/execute_instructions.c
 
-SRC2 = src/check_validity.c src/pushswap_main.c src/commands.c src/commands_2.c src/lst_tools.c src/utils_1.c src/utils_2.c src/solution.c src/execute_instructions.c
+SRC2 = src/check_validity.c src/pushswap_main.c src/commands.c src/commands_2.c src/lst_tools.c src/utils_1.c src/utils_2.c src/solution.c src/execute_instructions.c src/three_five_args.c
 
 OUT1 = $(SRC1:%.c=%.o)
 

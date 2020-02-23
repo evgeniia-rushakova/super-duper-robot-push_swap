@@ -75,6 +75,7 @@ t_pushswap        *create_stacks(t_pushswap *ps, int ac, char **av)
 	ps->max = 0;
 	ps->min = 0;
 	ps->medium = 0;
+	ps->instructions = 0;
 	return (ps);
 }
 

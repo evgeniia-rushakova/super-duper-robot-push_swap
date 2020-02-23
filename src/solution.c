@@ -12,46 +12,51 @@
 
 #include "pushswap.h"
 
-void			sort_three_args(t_pushswap *ps)
+void			sort_hundred_max_args(t_pushswap *ps)
 {
-	(void)ps;
-}
-
-void			find_max_min_medium_nums(t_pushswap *ps)
-{
-	int min;
-	int max;
+	int i;
 	t_stk *tmp;
 
-	tmp = ps->a->head;
-	min = tmp->num;
-	while (tmp && tmp->next)
+	i = ps->quant_nums;
+	ft_printf("quant nums is: %i\n", ps->quant_nums);
+	while (ps->a && i)
 	{
-		if (min > tmp->next->num)
-			min = tmp->next->num;
-		tmp = tmp->next;
-	}
-	tmp = ps->a->head;
-	max = tmp->num;
-	while (tmp && tmp->next)
-	{
-		if (max < tmp->next->num)
-			max = tmp->next->num;
-		tmp = tmp->next;
-	}
-	ps->max = max;
-	ps->min = min;
-	ps->medium = (int)(ps->min + (ps->max - ps->min)/2);
+		if (ps->a->num < ps->medium)
+		{
 
-	ft_printf("min num in row is %i\n", ps->min);
-	ft_printf("max num in row is %i\n", ps->max);
-	ft_printf("medium num in row is %i\n", ps->medium);
+			ps_pb(ps);
+
+		}
+		else
+			ps_ra(ps);
+		ps->a= ps->a->next;
+		i--;
+	}
 }
 
 void			push_swap(t_pushswap *ps)
 {
+	ft_printf("before:\n");
+	print_stk(ps->a,1);
+	print_stk(ps->b, 2);
+	ft_printf("-----------\n");
+
 	find_max_min_medium_nums(ps);
-	if (ps->quant_nums <= 3)
-		sort_three_args(ps);
+	if (ps->quant_nums == 2)
+		ps_sa(ps);
+	if (ps->quant_nums == 3)
+		sort_three_args(ps, 'a');//3 operations max
+	if (ps->quant_nums > 3 && ps->quant_nums <= 5)
+		sort_five_max_args(ps);// 12 operations max
+	if (ps->quant_nums > 5 && ps->quant_nums <= 100)
+		sort_hundred_max_args(ps);
+	ft_printf("\n-----------\nafter:\n");
+	print_stk(ps->a,1);
+	print_stk(ps->b, 2);
+	ft_printf("INSTRUCTIONS: %i\n", ps->instructions);
+	if (check_order(ps) == 1)
+		ft_printf("****OK****\n");
+	else
+		ft_printf("****KO****\n");
 }
 

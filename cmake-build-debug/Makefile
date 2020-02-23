@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/F6AAC429-8F56-42A5-BCF7-7671B2DC3B17/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/BD60626A-1860-40DD-A1BD-DD00FCD4A3C7/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/F6AAC429-8F56-42A5-BCF7-7671B2DC3B17/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
+RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/BD60626A-1860-40DD-A1BD-DD00FCD4A3C7/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /Users/jslave/PUSH_SWAP/super-duper-robot-push_swap/cmake-bui
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/F6AAC429-8F56-42A5-BCF7-7671B2DC3B17/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/BD60626A-1860-40DD-A1BD-DD00FCD4A3C7/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/F6AAC429-8F56-42A5-BCF7-7671B2DC3B17/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/private/var/folders/zz/zyxvpxvq6csfxvn_n00018xh000_7c/T/AppTranslocation/BD60626A-1860-40DD-A1BD-DD00FCD4A3C7/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -3127,6 +3127,33 @@ src/solution.c.s:
 	$(MAKE) -f CMakeFiles/cmake_push_swap.dir/build.make CMakeFiles/cmake_push_swap.dir/src/solution.c.s
 .PHONY : src/solution.c.s
 
+src/three_five_args.o: src/three_five_args.c.o
+
+.PHONY : src/three_five_args.o
+
+# target to build an object file
+src/three_five_args.c.o:
+	$(MAKE) -f CMakeFiles/cmake_push_swap.dir/build.make CMakeFiles/cmake_push_swap.dir/src/three_five_args.c.o
+.PHONY : src/three_five_args.c.o
+
+src/three_five_args.i: src/three_five_args.c.i
+
+.PHONY : src/three_five_args.i
+
+# target to preprocess a source file
+src/three_five_args.c.i:
+	$(MAKE) -f CMakeFiles/cmake_push_swap.dir/build.make CMakeFiles/cmake_push_swap.dir/src/three_five_args.c.i
+.PHONY : src/three_five_args.c.i
+
+src/three_five_args.s: src/three_five_args.c.s
+
+.PHONY : src/three_five_args.s
+
+# target to generate assembly for a file
+src/three_five_args.c.s:
+	$(MAKE) -f CMakeFiles/cmake_push_swap.dir/build.make CMakeFiles/cmake_push_swap.dir/src/three_five_args.c.s
+.PHONY : src/three_five_args.c.s
+
 src/utils_1.o: src/utils_1.c.o
 
 .PHONY : src/utils_1.o
@@ -3497,6 +3524,9 @@ help:
 	@echo "... src/solution.o"
 	@echo "... src/solution.i"
 	@echo "... src/solution.s"
+	@echo "... src/three_five_args.o"
+	@echo "... src/three_five_args.i"
+	@echo "... src/three_five_args.s"
 	@echo "... src/utils_1.o"
 	@echo "... src/utils_1.i"
 	@echo "... src/utils_1.s"
