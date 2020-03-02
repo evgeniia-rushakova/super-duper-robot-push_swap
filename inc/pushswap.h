@@ -29,6 +29,21 @@ typedef struct          s_stk
 	struct s_stk        *next;
 }                       t_stk;
 
+typedef struct          s_analyse
+{
+    int sa;
+    int sb;
+    int ss;
+    int pa;
+    int pb;
+    int ra;
+    int rb;
+    int rr;
+    int rra;
+    int rrb;
+    int rrr;
+}                       t_analyse;
+
 typedef struct          s_ps
 {
 	int                 quant_nums;
@@ -38,6 +53,7 @@ typedef struct          s_ps
 	t_stk               *a;
 	t_stk               *b;
 	int 				instructions;//DEL
+	t_analyse           *analyse;
 }                       t_pushswap;
 
 /*
@@ -83,6 +99,7 @@ void			free_ps(t_pushswap *ps);
 void			print_stk(t_stk *head, int stack);//del
 void			find_max_min_medium_nums(t_pushswap *ps);
 int				check_order_simple(t_pushswap *ps, char stack);
+int				check_order_simple_rev(t_pushswap *ps, char stack);
 int				find_steps_before_num(t_stk *stk, char start_end, int quant, int num);
 void			get_minimum_on_top(t_pushswap *ps);
 void			repeat_function(int times,t_pushswap *ps, void (*f)(t_pushswap *));
@@ -106,4 +123,7 @@ void			push_swap(t_pushswap *ps);
 void			sort_three_args(t_pushswap *ps, char stack);
 void			sort_five_max_args(t_pushswap *ps);
 
+
+
+void            print_analyse(t_pushswap *ps);
 #endif

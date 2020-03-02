@@ -6,7 +6,7 @@ set(CMAKE_C_STANDARD 11)
 include_directories(inc)
 include_directories(libft/includes)
 
-add_executable(cmake_checker
+add_executable(checker
         inc/pushswap.h
         libft/includes/ft_printf.h
         libft/includes/libft.h
@@ -105,13 +105,15 @@ add_executable(cmake_checker
         src/check_validity.c
         src/checker_main.c
         src/commands.c
-        src/lst_tools.c
-        src/execute_instructions.c
         src/commands_2.c
+        src/execute_instructions.c
+        src/lst_tools.c
+        src/solution.c
+        src/three_five_args.c
         src/utils_1.c
         src/utils_2.c)
 
-add_executable(cmake_push_swap
+add_executable(pushswap
         inc/pushswap.h
         libft/includes/ft_printf.h
         libft/includes/libft.h
@@ -208,10 +210,12 @@ add_executable(cmake_push_swap
         libft/srcs/ft_toupper.c
         libft/srcs/get_next_line.c
         src/check_validity.c
-        src/pushswap_main.c
         src/commands.c
-        src/lst_tools.c
-        src/execute_instructions.c
         src/commands_2.c
+        src/execute_instructions.c
+        src/lst_tools.c
+        src/pushswap_main.c
+        src/solution.c
+        src/three_five_args.c
         src/utils_1.c
-        src/utils_2.c src/solution.c src/three_five_args.c)
+        src/utils_2.c)

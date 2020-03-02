@@ -47,6 +47,7 @@ void		ps_sb(t_pushswap *ps)/*sb : swap b - swap the first 2 elements at the top 
         }
 	}
 	ps->instructions++;//del
+	ps->analyse->sb++;
 	ft_printf("sb\n");
 
 }
@@ -83,6 +84,7 @@ nothing if b is empty. */
         }
     }
 	ps->instructions++;//del
+	ps->analyse->pa++;
 	ft_printf("pa\n");
 }
 
@@ -118,6 +120,7 @@ nothing if a is empty.*/
         }
 	}
 	ps->instructions++;//del
+    ps->analyse->pb++;
 	ft_printf("pb\n");
 }
 
@@ -142,5 +145,6 @@ the last one.  */
         }
     }
 	ps->instructions++;//del
+    ps->analyse->ra++;
     ft_printf("ra\n");
 }

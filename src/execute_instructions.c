@@ -33,6 +33,7 @@ the last one. */
         }
     }
 	ps->instructions++;//del
+    ps->analyse->rb++;
     ft_printf("rb\n");
 }
 
@@ -53,6 +54,7 @@ becomes the first one. */
         }
     }
 	ps->instructions++;//del
+    ps->analyse->rra++;
     ft_printf("rra\n");
 }
 
@@ -73,6 +75,7 @@ becomes the first one. */
         }
     }
     ps->instructions++;//del
+    ps->analyse->rrb++;
     ft_printf("rrb\n");
 }
 

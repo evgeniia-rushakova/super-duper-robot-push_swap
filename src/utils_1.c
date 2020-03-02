@@ -76,6 +76,20 @@ t_pushswap        *create_stacks(t_pushswap *ps, int ac, char **av)
 	ps->min = 0;
 	ps->medium = 0;
 	ps->instructions = 0;
+	if (!(ps->analyse = malloc(sizeof(t_analyse))))
+	    error_out(ps);//add free for analyse
+	ps->analyse->sa = 0;
+    ps->analyse->sb = 0;
+    ps->analyse->ss = 0;
+    ps->analyse->pa = 0;
+    ps->analyse->pb = 0;
+    ps->analyse->ra = 0;
+    ps->analyse->rb = 0;
+    ps->analyse->rr = 0;
+    ps->analyse->rra = 0;
+    ps->analyse->rrb = 0;
+    ps->analyse->rrr = 0;
+
 	return (ps);
 }
 
