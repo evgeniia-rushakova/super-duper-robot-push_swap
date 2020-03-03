@@ -111,7 +111,7 @@ add_executable(checker
         src/solution.c
         src/three_five_args.c
         src/utils_1.c
-        src/utils_2.c)
+        src/utils_2.c src/solution_2.c src/sorted_array.c)
 
 add_executable(pushswap
         inc/pushswap.h
@@ -218,4 +218,6 @@ add_executable(pushswap
         src/solution.c
         src/three_five_args.c
         src/utils_1.c
-        src/utils_2.c)
+        src/utils_2.c
+        src/sorted_array.c
+        src/solution_2.c)

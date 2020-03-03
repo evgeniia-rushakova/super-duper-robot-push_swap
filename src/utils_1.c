@@ -89,7 +89,8 @@ t_pushswap        *create_stacks(t_pushswap *ps, int ac, char **av)
     ps->analyse->rra = 0;
     ps->analyse->rrb = 0;
     ps->analyse->rrr = 0;
-
+    if (create_sorted_array(ps) != 1)
+    	error_out(ps);
 	return (ps);
 }
 
@@ -112,9 +113,14 @@ void        free_ps(t_pushswap *ps)
 			ft_memdel((void **)&ps->b);
 			ps->b = tmp;
 		}
+		if (ps->analyse)
+			ft_memdel((void **)&ps->analyse);
+		if (ps->sorted_arr)
+			ft_memdel((void **)&ps->sorted_arr);
 		ft_memdel((void **)&ps->b);
 		ft_memdel((void **)&ps);
 	}
+
 }
 
 void       error_out(t_pushswap *ps)

@@ -140,8 +140,9 @@ the last one.  */
             {
                 ps->a->head = ps->a;
                 change_head(ps->a->head, ps->a);
+                append_elem(ps->a, tmp);
             }
-            append_elem(ps->a, tmp);
+
         }
     }
 	ps->instructions++;//del

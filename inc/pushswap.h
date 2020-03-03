@@ -54,6 +54,7 @@ typedef struct          s_ps
 	t_stk               *b;
 	int 				instructions;//DEL
 	t_analyse           *analyse;
+	int                 *sorted_arr;
 }                       t_pushswap;
 
 /*
@@ -113,17 +114,33 @@ void            change_head(t_stk *stack, t_stk *new_head);
 t_stk           *append_elem(t_stk *stack, t_stk *elem);
 int             find_lst_size(t_stk *head);
 /*
- * solution.c
- */
-void			push_swap(t_pushswap *ps);
-
-/*
  * three_five_args.c
  */
 void			sort_three_args(t_pushswap *ps, char stack);
 void			sort_five_max_args(t_pushswap *ps);
 
-
-
 void            print_analyse(t_pushswap *ps);
+
+/*
+ * solution.c
+ */
+int             is_num_smaller_than_others(t_stk *stk, int num);
+int             is_num_bigger_than_others(t_stk *stk, int num);
+int             find_holding_numbers2(int min, int max, int param, int counter);
+int             is_nums_in_chunk_is_empty(t_pushswap *ps, int counter);
+int             find_place_for_num(t_pushswap *ps, int num);
+int             find_quant_nums_in_chunk(t_pushswap *ps, int counter);
+int             check_the_nearest_num_in_chunk(t_pushswap *ps, int counter, char opt);
+
+void            sort_hundred_max_args_4(t_pushswap *ps);
+void            sort_hundred_max_args_3(t_pushswap *ps);
+void            sort_hundred_max_args_2(t_pushswap *ps);
+void            sort_hundred_max_args_1(t_pushswap *ps);
+void			push_swap(t_pushswap *ps);
+/*
+ * sorted_array.c
+ */
+int         create_sorted_array(t_pushswap *ps);
+
+
 #endif
