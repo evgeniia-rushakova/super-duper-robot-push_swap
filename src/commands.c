@@ -27,7 +27,7 @@ void		ps_sa(t_pushswap *ps)/*sa : swap a - swap the first 2 elements at the top 
             change_head(ps->a->head, ps->a);
         }
     }
-	ps->instructions++;//del
+	ps->analyse->instructions++;//del
 	ft_printf("sa\n");
 }
 
@@ -46,7 +46,7 @@ void		ps_sb(t_pushswap *ps)/*sb : swap b - swap the first 2 elements at the top 
             change_head(ps->b->head, ps->b);
         }
 	}
-	ps->instructions++;//del
+	ps->analyse->instructions++;//del
 	ps->analyse->sb++;
 	ft_printf("sb\n");
 
@@ -83,7 +83,7 @@ nothing if b is empty. */
             change_head(ps->b->head, ps->b);
         }
     }
-	ps->instructions++;//del
+	ps->analyse->instructions++;//del
 	ps->analyse->pa++;
 	ft_printf("pa\n");
 }
@@ -119,7 +119,7 @@ nothing if a is empty.*/
         	change_head(ps->b->head, ps->b);
         }
 	}
-	ps->instructions++;//del
+    ps->analyse->instructions++;//del
     ps->analyse->pb++;
 	ft_printf("pb\n");
 }
@@ -145,7 +145,7 @@ the last one.  */
 
         }
     }
-	ps->instructions++;//del
+    ps->analyse->instructions++;//del
     ps->analyse->ra++;
     ft_printf("ra\n");
 }

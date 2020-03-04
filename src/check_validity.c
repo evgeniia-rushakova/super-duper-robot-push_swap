@@ -35,7 +35,6 @@ int 		check_duplicates(int ac, char **av)
 int 		check_nums(int ac, char **av)
 {
 	int i;
-	//int j;
 	long long int num;
 
 	i = 1;
@@ -44,13 +43,6 @@ int 		check_nums(int ac, char **av)
 		num = ft_atoi(av[i]);
 		if (num > INT_MAX || num < INT_MIN)
 			return (0);
-		/*j = 0;
-		while (av[i][j] != '\0')
-		{
-			if (ft_isdigit(av[i][j]) != 1)
-				return (0);
-			j++;
-		}*/
 		i++;
 	}
 	return (1);

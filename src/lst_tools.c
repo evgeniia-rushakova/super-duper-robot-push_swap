@@ -43,16 +43,6 @@ t_stk            *push(t_stk *head, t_stk *new_head)//vstavit element v golovu s
 	return (new_head);
 }
 
-/*t_stk       *pop(t_stk *head, t_pushswap *ps)//leak?
-{
-	t_stk *new_head;
-
-	new_head = head->next;
-	ps->a = new_head;
-	head->next = NULL;
-	return (head);
-}
-*/
 t_stk       *remove_elem(t_stk *elem)
 {
 	t_stk *tmp;

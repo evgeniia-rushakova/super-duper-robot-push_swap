@@ -55,10 +55,6 @@ void			find_max_min_medium_nums(t_pushswap *ps)
 	}
 	ps->max = max;
 	ps->min = min;
-	ps->medium = (ps->max + ps->min)/2;
-	ft_printf("min num %i ", ps->min);
-	ft_printf("max num %i ", ps->max);
-	ft_printf("medium num %i\n", ps->medium);
 }
 
 int			check_order_simple(t_pushswap *ps, char stack)
@@ -74,21 +70,6 @@ int			check_order_simple(t_pushswap *ps, char stack)
 		stk = stk->next;
 	}
 	return (1);
-}
-
-int			check_order_simple_rev(t_pushswap *ps, char stack)
-{
-    t_stk *stk;
-
-    stk = stack == 'a' ? ps->a->head : ps->b->head;
-    while (stk)
-    {
-        if (stk->next)
-            if (stk->num < stk->next->num)
-                return (-1);
-        stk = stk->next;
-    }
-    return (1);
 }
 
 int 			find_steps_before_num(t_stk *stk, char start_end, int quant, int num)
@@ -117,7 +98,7 @@ void			get_minimum_on_top(t_pushswap *ps)
 	find_max_min_medium_nums(ps);
 	start_steps = find_steps_before_num(ps->a, 's', find_lst_size(ps->a), ps->min);
 	end_steps = find_steps_before_num(ps->a, 'e', find_lst_size(ps->a), ps->min);
-	//ft_printf("steps_start: %i, steps_end: %i\n", start_steps, end_steps);
+
 	if (start_steps == 0 || end_steps == 0)
 	{
 		if (end_steps == 0)

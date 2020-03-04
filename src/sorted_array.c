@@ -43,16 +43,16 @@ int         create_sorted_array(t_pushswap *ps)
     int i;
 
     i = 0;
-    if (!(ps->sorted_arr = (int *)malloc(sizeof(int) * ps->quant_nums)))
+    if (!(ps->analyse->sorted_arr = (int *)malloc(sizeof(int) * ps->quant_nums)))
         return (-1);
     tmp = ps->a->head;
     while (tmp && i < ps->quant_nums)
     {
-        ps->sorted_arr[i] = tmp->num;
+        ps->analyse->sorted_arr[i] = tmp->num;
         i++;
         tmp = tmp->next;
     }
-    sort_int_tab(ps->sorted_arr, ps->quant_nums);
+    sort_int_tab(ps->analyse->sorted_arr, ps->quant_nums);
     return (1);
 }
 

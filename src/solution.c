@@ -42,87 +42,18 @@ int             is_num_bigger_than_others(t_stk *stk, int num)
     return (1);
 }
 
-int             find_holding_numbers2(int min, int max, int param, int counter)
-{
 
-    int step;
 
-    step = (max - min) / 5;
-    if (counter == 1)
-        return (param == 0 ? min : step);
-    if (counter == 2)
-        return (param == 0 ? step + 1 : (step * 2));
-    if (counter == 3)
-        return (param == 0 ? (step * 2 + 1) : (step * 3));
-    if (counter == 4)
-        return (param == 0 ? (step * 3 + 1) : (step * 4));
-    if (counter == 5)
-        return (param == 0 ? (step * 4 + 1) : (max));
-    return (0);
-}
-
-int             find_holding_numbers3(t_pushswap *ps, int counter, int chunks, int param)
+int             find_holding_numbers3(t_pushswap *ps,  int chunks, int param, int counter)
 {
     int num_in_chunks = ps->quant_nums / chunks;
     // 0 min 1 max
     if (counter == 1)
-        return (param == 0 ? ps->min : ps->sorted_arr[num_in_chunks]);
-    if (counter == 2)
-        return (param == 0 ? ps->sorted_arr[num_in_chunks + 1] : ps->sorted_arr[num_in_chunks * 2]);
-    if (counter == 3)
-        return (param == 0 ? ps->sorted_arr[num_in_chunks * 2 + 1] : ps->sorted_arr[num_in_chunks * 3]);
-    if (counter == 4)
-        return (param == 0 ? ps->sorted_arr[num_in_chunks * 3 + 1] : ps->sorted_arr[num_in_chunks * 4]);
-    if (counter == 5)
-        return (param == 0 ? ps->sorted_arr[num_in_chunks *4 + 1] : ps->max);
-    return (0);
-}
-
-
-int             is_nums_in_chunk_is_empty(t_pushswap *ps, int counter)
-{
-
-    t_stk *tmp;
-    int i;
-
-    i = 0;
-
-    if (ps->a && ps->a->head)
-    {
-        tmp = ps->a->head;
-        while (tmp)
-        {
-            if (tmp->num >= find_holding_numbers2(ps->min,ps->max, 0, counter) &&
-                tmp->num <= find_holding_numbers2(ps->min, ps->max, 1, counter))
-            {
-                return (-1);
-            }
-
-            tmp = tmp->next;
-        }
-    }
-    return (1);
-}
-
-int           find_place_for_num(t_pushswap *ps, int num)
-{
-    t_stk *head;
-    t_stk *prev;
-    int i = 0;
-
-    head = ps->b->head;
-
-    while (head && head->next)
-    {
-        prev = head;
-        i++;
-        if (num < prev->num && num > head->next->num)
-            break;
-
-        head = head->next;
-    }
-    return (i);
-
+        return (param == 0 ? ps->min : ps->analyse->sorted_arr[num_in_chunks]);
+    else if (counter == chunks)
+        return (param == 0 ? ps->analyse->sorted_arr[num_in_chunks * (counter - 1) + 1] : ps->max);
+    else
+        return (param == 0 ? ps->analyse->sorted_arr[num_in_chunks * (counter - 1) + 1] : ps->analyse->sorted_arr[num_in_chunks *counter]);
 }
 
 int             find_quant_nums_in_chunk(t_pushswap *ps, int counter)
@@ -135,9 +66,9 @@ int             find_quant_nums_in_chunk(t_pushswap *ps, int counter)
         tmp = ps->a->head;
         while (tmp) {
             if (tmp->num >=
-                find_holding_numbers2(ps->min, ps->max, 0, counter) &&
+                find_holding_numbers3(ps, ps->chunks, 0, counter) &&
                 tmp->num <=
-                find_holding_numbers2(ps->min, ps->max, 1, counter)) {
+                find_holding_numbers3(ps, ps->chunks, 1, counter)) {
                 numbers_in_chunk++;
             }
             tmp = tmp->next;
@@ -161,8 +92,8 @@ int            check_the_nearest_num_in_chunk(t_pushswap *ps, int counter, char 
         while (tmp)
         {
             i++;
-            if (tmp->num >= find_holding_numbers2(ps->min,ps->max, 0, counter) &&
-                tmp->num <= find_holding_numbers2(ps->min, ps->max, 1, counter))
+            if (tmp->num >= find_holding_numbers3(ps, ps->chunks, 0, counter) &&
+                tmp->num <= find_holding_numbers3(ps, ps->chunks, 1, counter))
             {
                 numbers_in_chunk++;
                 if (opt == 's')
@@ -173,8 +104,8 @@ int            check_the_nearest_num_in_chunk(t_pushswap *ps, int counter, char 
         tmp = ps->a->head;
         while (tmp)
         {
-            if (tmp->num >= find_holding_numbers2(ps->min,ps->max, 0, counter) &&
-                tmp->num <= find_holding_numbers2(ps->min, ps->max, 1, counter))
+            if (tmp->num >= find_holding_numbers3(ps, ps->chunks, 0, counter) &&
+                tmp->num <= find_holding_numbers3(ps, ps->chunks, 1, counter))
                 numbers_in_chunk--;
             if (numbers_in_chunk == 0)
                 end++;
@@ -187,26 +118,25 @@ int            check_the_nearest_num_in_chunk(t_pushswap *ps, int counter, char 
 
 
 
-void            sort_hundred_max_args_1(t_pushswap *ps)///////////////////////////////////////////////////
+void            sort_hundred_max_args_1(t_pushswap *ps)
 {
-    //внезапно обнаружилось что я неправильно выделяю чанки и надо переписывать функцию чанков быстрее всего намутить массив отсортировать баблом и выделить номера максимума и минимума чанков сука
     t_stk *tmp;
     int param = 1;
     int counter = 0;
 
-    while (counter++ <= 1)
+    while (counter++ <= ps->chunks)
     {
-        ft_printf("nums in chunk: %i\n", find_quant_nums_in_chunk(ps, 1));
-        ft_printf("Nearest num in chunk start: %i\n", check_the_nearest_num_in_chunk(ps, counter, 's'));
-        ft_printf("Nearest num in chunk end: %i\n", check_the_nearest_num_in_chunk(ps, counter, 'e'));
+        //ft_printf("nums in chunk: %i\n", find_quant_nums_in_chunk(ps, 1));
+        //ft_printf("Nearest num in chunk start: %i\n", check_the_nearest_num_in_chunk(ps, counter, 's'));
+        //ft_printf("Nearest num in chunk end: %i\n", check_the_nearest_num_in_chunk(ps, counter, 'e'));
         while (find_quant_nums_in_chunk(ps, counter) != 0)
         {
             if(!ps->a || !ps->a->head)
                 break;
             int end = check_the_nearest_num_in_chunk(ps, counter, 'e');
             int start = check_the_nearest_num_in_chunk(ps, counter, 's');
-            ft_printf("start: %i  ", start);
-            ft_printf("end: %i\n", end);
+            //ft_printf("start: %i  ", start);
+            //ft_printf("end: %i\n", end);
             if (start <= end && (start != 1 && end != 1)) {
                 while (start--)
                     ps_ra(ps);
@@ -218,12 +148,11 @@ void            sort_hundred_max_args_1(t_pushswap *ps)/////////////////////////
                 start = 0;
             }
             tmp = ps->a->head;
-            ft_printf("hold_min: %i\n", find_holding_numbers2(ps->min,ps->max, 0, counter));
-            ft_printf("hold_max: %i\n", find_holding_numbers2(ps->min,ps->max, 1, counter));
-            if (tmp->num >= find_holding_numbers2(ps->min,ps->max, 0, counter) && tmp->num <= find_holding_numbers2(ps->min, ps->max, 1, counter))
+            //ft_printf("hold_min: %i\n", find_holding_numbers3(ps, ps->chunks, 0, counter));
+            //ft_printf("hold_max: %i\n", find_holding_numbers3(ps, ps->chunks, 1, counter));
+            if (tmp->num >= find_holding_numbers3(ps, ps->chunks, 0, counter) &&
+            tmp->num <= find_holding_numbers3(ps, ps->chunks, 1, counter))
             {
-                ft_printf("NUMHEREAAAA: %i\n", tmp->num);
-
                 if (is_num_bigger_than_others(ps->b, tmp->num) == 1)
                         ps_pb(ps);
                 else
@@ -232,18 +161,72 @@ void            sort_hundred_max_args_1(t_pushswap *ps)/////////////////////////
                         ps_rb(ps);
                 }
             }
-                ft_printf("test ");
-                print_stk(ps->a, 1);
-                print_stk(ps->b, 2);
-                ft_printf("length of stak b is: %i\n", find_lst_size(ps->b));
+                //ft_printf("test ");
+                //print_stk(ps->a, 1);
+               // print_stk(ps->b, 2);
+                //ft_printf("length of stak b is: %i\n", find_lst_size(ps->b));
 
         }
+    }
+    push_back_elements_on_a(ps);
+}
+
+int             find_the_biggest_num(t_stk *stk)
+{
+    t_stk *tmp;
+    int max;
+
+    max = 0;
+
+    if (stk && stk->head)
+    {
+        tmp = stk->head;
+        max = tmp->num;
+        while (tmp && tmp->next)
+        {
+            if (max < tmp->next->num)
+                max = tmp->next->num;
+            tmp = tmp->next;
+        }
+    }
+    return (max);
+}
+
+void            push_back_elements_on_a(t_pushswap *ps)
+{
+    int start;
+    int end;
+    int max_num_in_stk;
+
+    while (ps->b && ps->b->head)
+    {
+        max_num_in_stk = find_the_biggest_num(ps->b);
+        start = find_steps_before_num(ps->b, 's', find_lst_size(ps->b), max_num_in_stk);
+        end = find_steps_before_num(ps->b, 'e', find_lst_size(ps->b), max_num_in_stk);
+        if (start <= end) {
+            while (start--)
+                ps_rb(ps);
+            end = 0;
+        } else
+        {
+            while (end--)
+                ps_rrb(ps);
+            start = 0;
+        }
+        ps_pa(ps);
     }
 }
 
 void			push_swap(t_pushswap *ps)
 {
 	ft_printf("before:\n");
+	int i;
+	i = 0;
+	while (i < ps->quant_nums)
+    {
+	    ft_printf("%i ", ps->analyse->sorted_arr[i]);
+	    i++;
+    }
 	print_stk(ps->a,1);
 	print_stk(ps->b, 2);
 	ft_printf("-----------\n");
@@ -255,36 +238,24 @@ void			push_swap(t_pushswap *ps)
 		sort_three_args(ps, 'a');//3 operations max
 	if (ps->quant_nums > 3 && ps->quant_nums <= 5)
 		sort_five_max_args(ps);// 12 operations max
-	if (ps->quant_nums > 5 && ps->quant_nums <= 100)
+	if (ps->quant_nums > 5 && ps->quant_nums <= 500)
     {
-	    int i = 1;
-
-        int counter = 1;
-        while (counter <=5)
-        {
-            ft_printf("chunk_start: %i chunk_end: %i\n",find_holding_numbers2
-                    (ps->min, ps->max, 0, counter), find_holding_numbers2(ps->min, ps->max, 1, counter) );
-            counter++;
-        }
-      //  while (ps->a && ps->a->head)
-            {
-                //sort_hundred_max_args_4(ps);4312
-              // sort_hundred_max_args_3(ps);//1217
-                //sort_hundred_max_args_2(ps);//1575
-                sort_hundred_max_args_1(ps);
-               // find_max_min_medium_nums(ps);
-            }
-     /*  while (ps->b && ps->b->head)
-            ps_pa(ps);*/
-
+	    if (ps->quant_nums <= 100)
+            ps->chunks = 5;
+	    else
+	        ps->chunks = 5 + (ps->quant_nums - 100)/50;
+        sort_hundred_max_args_1(ps);
+        ft_printf("chunks : %i\n", ps->chunks);
     }
+
+
 
 
 
 	ft_printf("\n-----------\nafter:\n");
 	print_stk(ps->a,1);
 	print_stk(ps->b, 2);
-	ft_printf("INSTRUCTIONS: %i\n", ps->instructions);
+	ft_printf("INSTRUCTIONS: %i\n", ps->analyse->instructions);
 	print_analyse(ps);
 	if (check_order(ps) == 1)
 		ft_printf("****OK****\n");

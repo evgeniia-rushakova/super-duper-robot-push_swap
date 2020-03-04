@@ -74,8 +74,7 @@ t_pushswap        *create_stacks(t_pushswap *ps, int ac, char **av)
 	ps->a->head = ps->a;
 	ps->max = 0;
 	ps->min = 0;
-	ps->medium = 0;
-	ps->instructions = 0;
+
 	if (!(ps->analyse = malloc(sizeof(t_analyse))))
 	    error_out(ps);//add free for analyse
 	ps->analyse->sa = 0;
@@ -89,6 +88,7 @@ t_pushswap        *create_stacks(t_pushswap *ps, int ac, char **av)
     ps->analyse->rra = 0;
     ps->analyse->rrb = 0;
     ps->analyse->rrr = 0;
+    ps->analyse->instructions = 0;
     if (create_sorted_array(ps) != 1)
     	error_out(ps);
 	return (ps);
@@ -113,10 +113,11 @@ void        free_ps(t_pushswap *ps)
 			ft_memdel((void **)&ps->b);
 			ps->b = tmp;
 		}
+        if (ps->analyse->sorted_arr)
+            ft_memdel((void **)&ps->analyse->sorted_arr);
 		if (ps->analyse)
 			ft_memdel((void **)&ps->analyse);
-		if (ps->sorted_arr)
-			ft_memdel((void **)&ps->sorted_arr);
+
 		ft_memdel((void **)&ps->b);
 		ft_memdel((void **)&ps);
 	}

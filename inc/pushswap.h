@@ -42,19 +42,20 @@ typedef struct          s_analyse
     int rra;
     int rrb;
     int rrr;
+    int instructions;//DEL
+    int                 *sorted_arr;
 }                       t_analyse;
 
 typedef struct          s_ps
 {
+    t_stk               *a;
+    t_stk               *b;
 	int                 quant_nums;
 	int 				max;
 	int					min;
-	int					medium;
-	t_stk               *a;
-	t_stk               *b;
-	int 				instructions;//DEL
+	int                 chunks;
 	t_analyse           *analyse;
-	int                 *sorted_arr;
+
 }                       t_pushswap;
 
 /*
@@ -108,7 +109,6 @@ void			repeat_function(int times,t_pushswap *ps, void (*f)(t_pushswap *));
  * lst_tools.c
  */
 t_stk           *push(t_stk *head, t_stk *new_head);
-//t_stk           *pop(t_stk *head, t_pushswap *ps);
 t_stk           *remove_elem(t_stk *elem);
 void            change_head(t_stk *stack, t_stk *new_head);
 t_stk           *append_elem(t_stk *stack, t_stk *elem);
@@ -124,18 +124,12 @@ void            print_analyse(t_pushswap *ps);
 /*
  * solution.c
  */
-int             is_num_smaller_than_others(t_stk *stk, int num);
 int             is_num_bigger_than_others(t_stk *stk, int num);
-int             find_holding_numbers2(int min, int max, int param, int counter);
-int             is_nums_in_chunk_is_empty(t_pushswap *ps, int counter);
-int             find_place_for_num(t_pushswap *ps, int num);
 int             find_quant_nums_in_chunk(t_pushswap *ps, int counter);
 int             check_the_nearest_num_in_chunk(t_pushswap *ps, int counter, char opt);
 
-void            sort_hundred_max_args_4(t_pushswap *ps);
-void            sort_hundred_max_args_3(t_pushswap *ps);
-void            sort_hundred_max_args_2(t_pushswap *ps);
 void            sort_hundred_max_args_1(t_pushswap *ps);
+void            push_back_elements_on_a(t_pushswap *ps);
 void			push_swap(t_pushswap *ps);
 /*
  * sorted_array.c

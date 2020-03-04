@@ -32,7 +32,7 @@ the last one. */
             append_elem(ps->b, tmp);
         }
     }
-	ps->instructions++;//del
+    ps->analyse->instructions++;//del
     ps->analyse->rb++;
     ft_printf("rb\n");
 }
@@ -53,7 +53,7 @@ becomes the first one. */
             change_head(ps->a->head, ps->a);
         }
     }
-	ps->instructions++;//del
+    ps->analyse->instructions++;//del
     ps->analyse->rra++;
     ft_printf("rra\n");
 }
@@ -74,7 +74,7 @@ becomes the first one. */
             change_head(ps->b->head, ps->b);
         }
     }
-    ps->instructions++;//del
+    ps->analyse->instructions++;//del
     ps->analyse->rrb++;
     ft_printf("rrb\n");
 }
