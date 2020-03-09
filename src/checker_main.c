@@ -31,7 +31,7 @@ int 		main(int ac, char **av)
 			if (check_instructions(buf) != 1)
 				error_out(ps);
 			else
-				execute_instruction(ps, buf);
+				execute_instruction(ps, buf, 0);
 		}
 		if (check_order(ps) == 1)
 			ft_printf("OK\n");

@@ -12,13 +12,13 @@
 
 # include "pushswap.h"
 
-void		ps_rb(t_pushswap *ps)/*rb : rotate b - shift up all elements of stack b by 1. The first element becomes
+void		ps_rb(t_pushswap *ps, int ps_ch)/*rb : rotate b - shift up all elements of stack b by 1. The first element becomes
 the last one. */
 {
     t_stk *tmp;
     t_stk *head_tmp;
 
-    if (ps->b && ps->b->head)
+    if (ps->b && ps->b->head &&ps->b->head->next)
     {
         head_tmp = ps->b->head->next;
         if ((tmp = remove_elem(ps->b->head)))
@@ -34,10 +34,11 @@ the last one. */
     }
     ps->analyse->instructions++;//del
     ps->analyse->rb++;
-    ft_printf("rb\n");
+    if (ps_ch)
+        ft_printf("rb\n");
 }
 
-void		ps_rra(t_pushswap *ps)/*rra : reverse rotate a - shift down all elements of stack a by 1. The last element
+void		ps_rra(t_pushswap *ps, int ps_ch)/*rra : reverse rotate a - shift down all elements of stack a by 1. The last element
 becomes the first one. */
 {
     t_stk *tmp;
@@ -55,10 +56,11 @@ becomes the first one. */
     }
     ps->analyse->instructions++;//del
     ps->analyse->rra++;
-    ft_printf("rra\n");
+    if (ps_ch)
+        ft_printf("rra\n");
 }
 
-void		ps_rrb(t_pushswap *ps)/*rrb : reverse rotate b - shift down all elements of stack b by 1. The last element
+void		ps_rrb(t_pushswap *ps, int ps_ch)/*rrb : reverse rotate b - shift down all elements of stack b by 1. The last element
 becomes the first one. */
 {
     t_stk *tmp;
@@ -76,43 +78,32 @@ becomes the first one. */
     }
     ps->analyse->instructions++;//del
     ps->analyse->rrb++;
-    ft_printf("rrb\n");
+    if (ps_ch)
+        ft_printf("rrb\n");
 }
 
-void		execute_instruction(t_pushswap *ps, char *cmd)
+void		execute_instruction(t_pushswap *ps, char *cmd, int ps_ch)//ps - 1 ch 0
 {
-    write(1, "\x1b[32m", 5);
-    ft_printf("before:\n");
-    print_stk(ps->a,1);
-    print_stk(ps->b, 2);
-    write(1, "\x1b[0m", 5);
-
     if (ft_strequ(cmd, "sa\n") == 1)
-        ps_sa(ps);
+        ps_sa(ps, ps_ch);
     else if (ft_strequ(cmd, "sb\n") == 1)
-        ps_sb(ps);
+        ps_sb(ps, ps_ch);
     else if (ft_strequ(cmd, "ss\n") == 1)
-        ps_ss(ps);
+        ps_ss(ps, ps_ch);
     else if (ft_strequ(cmd, "pa\n") == 1)
-        ps_pa(ps);
+        ps_pa(ps, ps_ch);
     else if (ft_strequ(cmd, "pb\n") == 1)
-        ps_pb(ps);
+        ps_pb(ps, ps_ch);
     else if (ft_strequ(cmd, "ra\n") == 1)
-        ps_ra(ps);
+        ps_ra(ps, ps_ch);
     else if (ft_strequ(cmd, "rb\n") == 1)
-        ps_rb(ps);
+        ps_rb(ps, ps_ch);
     else if (ft_strequ(cmd, "rr\n") == 1)
-        ps_rr(ps);
+        ps_rr(ps, ps_ch);
     else if (ft_strequ(cmd, "rra\n") == 1)
-        ps_rra(ps);
+        ps_rra(ps, ps_ch);
     else if (ft_strequ(cmd, "rrb\n") == 1)
-        ps_rrb(ps);
+        ps_rrb(ps, ps_ch);
     else if (ft_strequ(cmd, "rrr\n") == 1)
-        ps_rrr(ps);
-    write(1, "\x1b[31m", 5);
-
-    ft_printf("after:\n");
-    print_stk(ps->a,1);
-    print_stk(ps->b, 2);
-    write(1, "\x1b[0m", 5);
+        ps_rrr(ps, ps_ch);
 }

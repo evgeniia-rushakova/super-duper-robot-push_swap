@@ -39,9 +39,11 @@ int 		main(int ac, char **av)
 		exit(1);
 	if (check_validity(ac, av) == 1)
 	{
+		////////добавить считывание строки аргумента
 		if (!(ps = create_stacks(ps, ac, av)))
 			error_out(ps);
 		push_swap(ps);
+
 		free_ps(ps);
 	}
 	else

@@ -69,24 +69,24 @@ int				check_duplicates(int ac, char **av);
 /*
  * commands.c
  */
-void			ps_sa(t_pushswap *ps);
-void			ps_sb(t_pushswap *ps);
-void			ps_pa(t_pushswap *ps);
-void			ps_pb(t_pushswap *ps);
-void			ps_ra(t_pushswap *ps);
+void			ps_sa(t_pushswap *ps, int ps_ch);
+void			ps_sb(t_pushswap *ps, int ps_ch);
+void			ps_pa(t_pushswap *ps, int ps_ch);
+void			ps_pb(t_pushswap *ps, int ps_ch);
+void			ps_ra(t_pushswap *ps, int ps_ch);
 /*
  * coomands_2.c
  */
-void			ps_rr(t_pushswap *ps);
-void			ps_rrr(t_pushswap *ps);
-void			ps_ss(t_pushswap *ps);
+void			ps_rr(t_pushswap *ps, int ps_ch);
+void			ps_rrr(t_pushswap *ps, int ps_ch);
+void			ps_ss(t_pushswap *ps, int ps_ch);
 /*
  * execute_instructions.c
  */
-void        	execute_instruction(t_pushswap *ps, char *cmd);
-void			ps_rrb(t_pushswap *ps);
-void			ps_rra(t_pushswap *ps);
-void			ps_rb(t_pushswap *ps);
+void        	execute_instruction(t_pushswap *ps, char *cmd, int ps_ch);
+void			ps_rrb(t_pushswap *ps, int ps_ch);
+void			ps_rra(t_pushswap *ps, int ps_ch);
+void			ps_rb(t_pushswap *ps, int ps_ch);
 /*
  * utils_1.c
  */

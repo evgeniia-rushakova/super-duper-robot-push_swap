@@ -12,7 +12,7 @@
 
 #include "pushswap.h"
 
-void		ps_sa(t_pushswap *ps)/*sa : swap a - swap the first 2 elements at the top of stack a. Do nothing if there
+void		ps_sa(t_pushswap *ps, int ps_ch)/*sa : swap a - swap the first 2 elements at the top of stack a. Do nothing if there
 		is only one or no elements).*/
 {
 	t_stk *tmp;
@@ -28,10 +28,11 @@ void		ps_sa(t_pushswap *ps)/*sa : swap a - swap the first 2 elements at the top 
         }
     }
 	ps->analyse->instructions++;//del
-	ft_printf("sa\n");
+	if (ps_ch)
+		ft_printf("sa\n");
 }
 
-void		ps_sb(t_pushswap *ps)/*sb : swap b - swap the first 2 elements at the top of stack b. Do nothing if there
+void		ps_sb(t_pushswap *ps, int ps_ch)/*sb : swap b - swap the first 2 elements at the top of stack b. Do nothing if there
 		is only one or no elements).*/
 {
 	t_stk *tmp;
@@ -48,11 +49,12 @@ void		ps_sb(t_pushswap *ps)/*sb : swap b - swap the first 2 elements at the top 
 	}
 	ps->analyse->instructions++;//del
 	ps->analyse->sb++;
-	ft_printf("sb\n");
+	if (ps_ch)
+		ft_printf("sb\n");
 
 }
 
-void		ps_pa(t_pushswap *ps)/* pa : push a - take the first element at the top of b and put it at the top of a. Do
+void		ps_pa(t_pushswap *ps, int ps_ch)/* pa : push a - take the first element at the top of b and put it at the top of a. Do
 nothing if b is empty. */
 {
     t_stk *tmp;
@@ -85,10 +87,11 @@ nothing if b is empty. */
     }
 	ps->analyse->instructions++;//del
 	ps->analyse->pa++;
-	ft_printf("pa\n");
+	if (ps_ch)
+		ft_printf("pa\n");
 }
 
-void		ps_pb(t_pushswap *ps)/* pb : push b - take the first element at the top of a and put it at the top of b. Do
+void		ps_pb(t_pushswap *ps, int ps_ch)/* pb : push b - take the first element at the top of a and put it at the top of b. Do
 nothing if a is empty.*/
 {
 	t_stk *tmp;
@@ -121,10 +124,11 @@ nothing if a is empty.*/
 	}
     ps->analyse->instructions++;//del
     ps->analyse->pb++;
-	ft_printf("pb\n");
+	if (ps_ch)
+		ft_printf("pb\n");
 }
 
-void		ps_ra(t_pushswap *ps)/*ra : rotate a - shift up all elements of stack a by 1. The first element becomes
+void		ps_ra(t_pushswap *ps, int ps_ch)/*ra : rotate a - shift up all elements of stack a by 1. The first element becomes
 the last one.  */
 {
     t_stk *tmp;
@@ -147,5 +151,6 @@ the last one.  */
     }
     ps->analyse->instructions++;//del
     ps->analyse->ra++;
-    ft_printf("ra\n");
+	if (ps_ch)
+    	ft_printf("ra\n");
 }

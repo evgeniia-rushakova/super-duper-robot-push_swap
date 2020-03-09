@@ -12,35 +12,38 @@
 
 # include "pushswap.h"
 
-void		ps_rrr(t_pushswap *ps)/* rrr : rra and rrb at the same time. */
+void		ps_rrr(t_pushswap *ps, int ps_ch)/* rrr : rra and rrb at the same time. */
 {
-    ps_rra(ps);
-    ps_rrb(ps);
+    ps_rra(ps, ps_ch);
+    ps_rrb(ps, ps_ch);
     ps->analyse->instructions++;//del
     ps->analyse->rrr++;
     ps->analyse->rra--;
     ps->analyse->rrb--;
-    ft_printf("rrr\n");
+	if (ps_ch)
+    	ft_printf("rrr\n");
 }
 
-void		ps_rr(t_pushswap *ps)/* rr : ra and rb at the same time.*/
+void		ps_rr(t_pushswap *ps, int ps_ch)/* rr : ra and rb at the same time.*/
 {
-    ps_ra(ps);
-    ps_rb(ps);
+    ps_ra(ps, ps_ch);
+    ps_rb(ps, ps_ch);
     ps->analyse->instructions++;//del
     ps->analyse->rb++;
     ps->analyse->ra--;
     ps->analyse->rb--;
-    ft_printf("rb\n");
+	if (ps_ch)
+    	ft_printf("rb\n");
 }
 
-void		ps_ss(t_pushswap *ps)/*ss : sa and sb at the same time.*/
+void		ps_ss(t_pushswap *ps, int ps_ch)/*ss : sa and sb at the same time.*/
 {
-    ps_sa(ps);
-    ps_sb(ps);
+    ps_sa(ps, ps_ch);
+    ps_sb(ps, ps_ch);
     ps->analyse->instructions++;//del
     ps->analyse->ss++;
     ps->analyse->sa--;
     ps->analyse->sb--;
-    ft_printf("ss\n");
+	if (ps_ch)
+    	ft_printf("ss\n");
 }

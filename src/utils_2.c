@@ -77,15 +77,18 @@ int 			find_steps_before_num(t_stk *stk, char start_end, int quant, int num)
 	int st;
 	t_stk *tmp;
 
-	tmp = stk->head;
-
-	st = 0;
-	while (tmp)
+	if (stk && stk->head)
 	{
-		if (tmp->num == num)
-			break;
-		st++;
-		tmp = tmp->next;
+		tmp = stk->head;
+
+		st = 0;
+		while (tmp)
+		{
+			if (tmp->num == num)
+				break;
+			st++;
+			tmp = tmp->next;
+		}
 	}
 	return (start_end == 's' ? st : (quant - st));
 }
@@ -102,15 +105,15 @@ void			get_minimum_on_top(t_pushswap *ps)
 	if (start_steps == 0 || end_steps == 0)
 	{
 		if (end_steps == 0)
-			ps_rra(ps);
+			ps_rra(ps, 1);
 		return;
 	}
 	if (start_steps < end_steps)
 		while (start_steps-- != 0)
-			ps_ra(ps);
+			ps_ra(ps, 1);
 	else
 		while (end_steps-- != 0)
-			ps_rra(ps);
+			ps_rra(ps, 1);
 }
 
 void			repeat_function(int times,t_pushswap *ps, void (*f)(t_pushswap *))

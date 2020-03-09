@@ -65,12 +65,16 @@ t_stk       *append_elem(t_stk *stack_head, t_stk *elem)
 {
     t_stk *tmp;
 
-    tmp = stack_head;
-    while (tmp && tmp->next)
-        tmp = tmp->next;
-    tmp->next = elem;
-    elem->next = NULL;
-    elem->head = stack_head->head;
+    if (stack_head)
+	{
+		tmp = stack_head;
+		while (tmp && tmp->next)
+			tmp = tmp->next;
+		tmp->next = elem;
+		elem->next = NULL;
+		elem->head = stack_head->head;
+	} else
+		return (elem);
     return (stack_head);
 }
 

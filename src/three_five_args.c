@@ -23,37 +23,39 @@ void			sort_three_args(t_pushswap *ps, char stack)
 		return;
 	if (ps->a->head->num == ps->min)
 	{
-		ps_rra(ps);
-		ps_sa(ps);
+		ps_rra(ps, 1);
+		ps_sa(ps, 1);
 	}
 	else if ((third_num->num == ps->min && ps->a->head->num > sec_num->num) || sec_num->num == ps->min)
 	{
-		ps_sa(ps);
+		ps_sa(ps, 1);
 		sort_three_args(ps, 'a');
 	}
 	else if (third_num->num == ps->min && ps->a->head->num < sec_num->num)//892
-		ps_rra(ps);
+		ps_rra(ps, 1);
 }
 
 void			sort_five_max_args(t_pushswap *ps)
 {
 	get_minimum_on_top(ps);
-	ps_pb(ps);
+	ps_pb(ps, 1);
 	if (ps->quant_nums == 4)
 	{
 		find_max_min_medium_nums(ps);
 		sort_three_args(ps, 'a');
-		ps_pa(ps);
+		ps_pa(ps, 1);
 	}
 	if (ps->quant_nums == 5)
 	{
 		get_minimum_on_top(ps);
-		ps_pb(ps);
+		ps_pb(ps, 1);
 		find_max_min_medium_nums(ps);
 		sort_three_args(ps, 'a');
 		if (ps->b->head->num < ps->b->head->next->num)
-			ps_sb(ps);
-		repeat_function(2, ps, ps_pa);
+			ps_sb(ps, 1);
+		//repeat_function(2, ps, ps_pa);
+		ps_pa(ps, 1);
+		ps_pa(ps, 1);
 	}
 }
 
