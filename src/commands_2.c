@@ -14,8 +14,8 @@
 
 void		ps_rrr(t_pushswap *ps, int ps_ch)/* rrr : rra and rrb at the same time. */
 {
-    ps_rra(ps, ps_ch);
-    ps_rrb(ps, ps_ch);
+    ps_rra(ps, 0);
+    ps_rrb(ps, 0);
     ps->analyse->instructions++;//del
     ps->analyse->rrr++;
     ps->analyse->rra--;
@@ -26,20 +26,20 @@ void		ps_rrr(t_pushswap *ps, int ps_ch)/* rrr : rra and rrb at the same time. */
 
 void		ps_rr(t_pushswap *ps, int ps_ch)/* rr : ra and rb at the same time.*/
 {
-    ps_ra(ps, ps_ch);
-    ps_rb(ps, ps_ch);
+    ps_ra(ps, 0);
+    ps_rb(ps, 0);
     ps->analyse->instructions++;//del
-    ps->analyse->rb++;
+    ps->analyse->rr++;
     ps->analyse->ra--;
     ps->analyse->rb--;
 	if (ps_ch)
-    	ft_printf("rb\n");
+    	ft_printf("rr\n");
 }
 
 void		ps_ss(t_pushswap *ps, int ps_ch)/*ss : sa and sb at the same time.*/
 {
-    ps_sa(ps, ps_ch);
-    ps_sb(ps, ps_ch);
+    ps_sa(ps, 0);
+    ps_sb(ps, 0);
     ps->analyse->instructions++;//del
     ps->analyse->ss++;
     ps->analyse->sa--;

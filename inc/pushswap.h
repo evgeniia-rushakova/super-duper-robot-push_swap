@@ -54,6 +54,7 @@ typedef struct          s_ps
 	int 				max;
 	int					min;
 	int                 chunks;
+	int					*order;
 	t_analyse           *analyse;
 
 }                       t_pushswap;
