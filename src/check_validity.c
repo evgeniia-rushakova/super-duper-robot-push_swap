@@ -35,11 +35,20 @@ int 		check_duplicates(int ac, char **av, int start_num)
 int 		check_nums(int ac, char **av, int start_num)
 {
 	int i;
+	int j;
 	long long int num;
 
+	j = 0;
 	i = start_num;
 	while (i < ac)
 	{
+		j = 0;
+		while (av[i][j] != '\0')
+		{
+			if (ft_isdigit(av[i][j]) != 1)
+				return (0);
+			j++;
+		}
 		num = ft_atoi(av[i]);
 		if (num > INT_MAX || num < INT_MIN)
 			return (0);

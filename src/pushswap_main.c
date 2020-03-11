@@ -29,24 +29,6 @@
  * меньше 11500 оценка 1
  */
 
-char        **parse_string_arg(char *str)
-{
-	char **res;
-
-	res = ft_strsplit(str, ' ');
-	return (res);
-}
-
-int         find_2d_arr_size(char **arr)
-{
-	int i;
-
-	i = 0;
-	while (arr[i])
-		i++;
-	return (i);
-}
-
 int 		main(int ac, char **av)
 {
 	t_pushswap *ps;

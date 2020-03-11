@@ -12,6 +12,24 @@
 
 # include "pushswap.h"
 
+char        **parse_string_arg(char *str)
+{
+	char **res;
+
+	res = ft_strsplit(str, ' ');
+	return (res);
+}
+
+int         find_2d_arr_size(char **arr)
+{
+	int i;
+
+	i = 0;
+	while (arr[i])
+		i++;
+	return (i);
+}
+
 t_stk 		*create_data(int ac, char **av, char stack, char *param)
 {
 	int i;
@@ -58,8 +76,8 @@ int 		check_order(t_pushswap *ps)
 	}
 	if (find_lst_size(ps->a->head) != ps->quant_nums)
 		return (-1);
-	if (ps->b && (ps->b->head != NULL || ps->b->next != NULL))
-		return (-1);
+	/*if (ps->b && (ps->b->head != NULL || ps->b->next != NULL))
+		return (-1);*/
 	return (1);
 }
 
@@ -91,7 +109,7 @@ t_pushswap        *create_stacks(int ac, char **av, char *param)
 	ps->a = create_data(ac, av, 'a', param);
 	if (!ps->a || !ps->b)
 		error_out(ps);
-	ps->quant_nums = ac;
+	ps->quant_nums = param == NULL ? ac - 1 : ac;
 	ps->a->head = ps->a;
     if (create_sorted_array(ps) != 1)
     	error_out(ps);
@@ -132,6 +150,6 @@ void        free_ps(t_pushswap *ps)
 void       error_out(t_pushswap *ps)
 {
 	free_ps(ps);
-	write(2, "error\n", 7);
+	write(2, "Error\n", 7);
 	exit(1);
 }
