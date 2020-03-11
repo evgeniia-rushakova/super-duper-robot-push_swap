@@ -59,14 +59,17 @@ typedef struct          s_ps
 
 }                       t_pushswap;
 
+
+int         find_2d_arr_size(char **arr);
+char        **parse_string_arg(char *str);
 /*
  * check_validity.c
  */
-int             check_order_args(int ac,char **av);
-int             check_validity(int ac, char **av);
+int             check_order_args(int ac,char **av, int start_num);
+int             check_validity(int ac, char **av, int start_num);
 int             check_instructions(char *av);
-int				check_nums(int ac, char **av);
-int				check_duplicates(int ac, char **av);
+int				check_nums(int ac, char **av, int start_num);
+int				check_duplicates(int ac, char **av, int start_num);
 /*
  * commands.c
  */
@@ -91,10 +94,10 @@ void			ps_rb(t_pushswap *ps, int ps_ch);
 /*
  * utils_1.c
  */
-t_stk           *create_data(t_stk *first, int ac, char **av, char stack);
+t_stk           *create_data(int ac, char **av, char stack, char *param);
 int             check_order(t_pushswap *ps);
 void            error_out(t_pushswap *ps);
-t_pushswap      *create_stacks(t_pushswap *ps, int ac, char **av);
+t_pushswap      *create_stacks(int ac, char **av, char *param);
 void			free_ps(t_pushswap *ps);
 /*
  * utils_2.c

@@ -12,12 +12,12 @@
 
 # include "pushswap.h"
 
-t_stk 		*create_data(t_stk *first, int ac, char **av, char stack)
+t_stk 		*create_data(int ac, char **av, char stack, char *param)
 {
 	int i;
 	t_stk *head;
+	t_stk *first;
 
-	i = 2;
 	if(!(first = malloc(sizeof(t_stk))))
 		return (NULL);
 	if (stack == 'b')
@@ -29,7 +29,8 @@ t_stk 		*create_data(t_stk *first, int ac, char **av, char stack)
 	first->head = first;
 	first->next = NULL;
 	head = first;
-	first->num = ft_atoi(av[1]);
+	i = param == NULL ? 2 : 1;
+	first->num = ft_atoi(av[i - 1]);
 	while (i < ac)
 	{
 		first->next = malloc(sizeof(t_stk));
@@ -62,35 +63,39 @@ int 		check_order(t_pushswap *ps)
 	return (1);
 }
 
-t_pushswap        *create_stacks(t_pushswap *ps, int ac, char **av)
+t_pushswap        *create_stacks(int ac, char **av, char *param)
 {
+	t_pushswap *ps;
+
 	if(!(ps = malloc(sizeof(t_pushswap))))
 		error_out(ps);
-	ps->a = create_data(ps->a, ac, av, 'a');
-	ps->b = create_data(ps->b, ac, av, 'b');
-	if (!ps->a || !ps->b)
-		error_out(ps);
-	ps->quant_nums = ac - 1;
-	ps->a->head = ps->a;
+	ps->b = create_data(ac, av, 'b', param);
 	ps->max = 0;
 	ps->min = 0;
-
+////////////////////////////////////////////
 	if (!(ps->analyse = malloc(sizeof(t_analyse))))
-	    error_out(ps);//add free for analyse
+		error_out(ps);//add free for analyse
 	ps->analyse->sa = 0;
-    ps->analyse->sb = 0;
-    ps->analyse->ss = 0;
-    ps->analyse->pa = 0;
-    ps->analyse->pb = 0;
-    ps->analyse->ra = 0;
-    ps->analyse->rb = 0;
-    ps->analyse->rr = 0;
-    ps->analyse->rra = 0;
-    ps->analyse->rrb = 0;
-    ps->analyse->rrr = 0;
-    ps->analyse->instructions = 0;
+	ps->analyse->sb = 0;
+	ps->analyse->ss = 0;
+	ps->analyse->pa = 0;
+	ps->analyse->pb = 0;
+	ps->analyse->ra = 0;
+	ps->analyse->rb = 0;
+	ps->analyse->rr = 0;
+	ps->analyse->rra = 0;
+	ps->analyse->rrb = 0;
+	ps->analyse->rrr = 0;
+	ps->analyse->instructions = 0;
+	////////////////////////////////////
+	ps->a = create_data(ac, av, 'a', param);
+	if (!ps->a || !ps->b)
+		error_out(ps);
+	ps->quant_nums = ac;
+	ps->a->head = ps->a;
     if (create_sorted_array(ps) != 1)
     	error_out(ps);
+
 	return (ps);
 }
 

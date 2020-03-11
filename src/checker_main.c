@@ -15,15 +15,25 @@
 int 		main(int ac, char **av)
 {
 	int n;
+	//char **str_av;
 	char buf[50];
+	char **line;
+	int fd;
 	t_pushswap *ps;
 
 	ps = NULL;
 	if (ac <= 1)
 		exit(1);
-	if (check_validity(ac, av) == 1)
+	/*if (ac == 2)
 	{
-		if (!(ps = create_stacks(ps, ac, av)))
+		str_av = parse_string_arg(av[1]);
+		//check_validity(ac, av) == 1
+		if (!str_av || !(ps = create_stacks(ps, find_2d_arr_size(str_av), av)))
+			error_out(ps);
+	}
+	else */if (check_validity(ac, av, 1) == 1)
+	{
+		if (!(ps = create_stacks(ac, av, NULL)))
 			error_out(ps);
 		while ((n = read (0, buf, sizeof(buf))) > 1)
 		{

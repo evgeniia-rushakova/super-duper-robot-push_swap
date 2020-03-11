@@ -34,7 +34,7 @@ static int				qualw(char *s, char c)
 	return (res);
 }
 
-static void				memfree(char **str, int len)
+void				    memfree(char **str, int len)
 {
 	int i;
 
@@ -46,7 +46,6 @@ static void				memfree(char **str, int len)
 		i++;
 	}
 	free(str);
-	*str = NULL;
 }
 
 static char				*get_new_word(char *s, char c)

@@ -29,21 +29,47 @@
  * меньше 11500 оценка 1
  */
 
+char        **parse_string_arg(char *str)
+{
+	char **res;
+
+	res = ft_strsplit(str, ' ');
+	return (res);
+}
+
+int         find_2d_arr_size(char **arr)
+{
+	int i;
+
+	i = 0;
+	while (arr[i])
+		i++;
+	return (i);
+}
 
 int 		main(int ac, char **av)
 {
 	t_pushswap *ps;
+	char **str_av;
 
 	ps = NULL;
 	if (ac <= 1)
 		exit(1);
-	if (check_validity(ac, av) == 1)
+	if (ac == 2)
 	{
-		////////добавить считывание строки аргумента
-		if (!(ps = create_stacks(ps, ac, av)))
+		str_av = parse_string_arg(av[1]);
+		if (!str_av || check_validity(find_2d_arr_size(str_av), str_av, 0) != 1 || !(ps = create_stacks(find_2d_arr_size(str_av), str_av, "str")))
 			error_out(ps);
 		push_swap(ps);
-
+		memfree(str_av, find_2d_arr_size(str_av));
+		free_ps(ps);
+	}
+	else
+		if (check_validity(ac, av, 1) == 1)
+	{
+		if (!(ps = create_stacks(ac, av, NULL)))
+			error_out(ps);
+		push_swap(ps);
 		free_ps(ps);
 	}
 	else

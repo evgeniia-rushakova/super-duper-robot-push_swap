@@ -102,22 +102,24 @@ void            push_back_elements_on_a(t_pushswap *ps)
     int end;
     int max_num_in_stk;
 
+
     while (ps->b && ps->b->head)
     {
+		//print_stk(ps->b, 2);
         max_num_in_stk = find_the_biggest_num(ps->b);
         start = find_steps_before_num(ps->b, 's', find_lst_size(ps->b), max_num_in_stk);
         end = find_steps_before_num(ps->b, 'e', find_lst_size(ps->b), max_num_in_stk);
+      //  ft_printf("biggest_num: %i  start_steps: %i  end_steps: %i \n", max_num_in_stk, start, end);
         if (start <= end) {
             while (start--)
-                ps_rb(ps, 1);
-            end = 0;
+				ps_rb(ps, 1);
         } else
         {
             while (end--)
                 ps_rrb(ps, 1);
-            start = 0;
         }
-        ps_pa(ps, 1);
+		//print_stk(ps->b, 2);
+			ps_pa(ps, 1);
     }
 }
 
@@ -137,9 +139,17 @@ void			create_order_of_chunks(t_pushswap *ps)
 	{
 		ps->order[i] = devide;
 		ps->order[i + 1] = devide + diff;
-		diff+=2;
-		i+=2;
+		diff += 2;
+		i += 2;
 		devide--;
+	}
+	i = 0;
+	int max = ps->chunks;
+	while (i < ps->chunks)
+	{
+		ps->order[i] = max;
+		i++;
+		max--;
 	}
 }
 
@@ -149,18 +159,19 @@ int 			is_num_in_chunk(int num,t_pushswap *ps, int curr_chunk)
 		num <= find_holding_numbers3(ps, ps->chunks, 1, curr_chunk))
 		return (1);
 	return (-1);
-
 }
+
+
 
 void			sort_hundred_max_args_4(t_pushswap *ps)
 {
 	t_stk *tmp;
 	int i;
-	int counter = 0;
+	int counter = -1;
 	create_order_of_chunks(ps);
 	i = 0;
 
-	while (counter < ps->chunks)
+	while (counter++ < ps->chunks)
 	{
 		while (find_quant_nums_in_chunk(ps, ps->order[counter]) != 0)
 		{
@@ -197,10 +208,8 @@ void			sort_hundred_max_args_4(t_pushswap *ps)
 					tmp = tmp->next;
 			}
 		}
-		counter++;
 	}
 	push_back_elements_on_a(ps);
-	ft_memdel((void **)&ps->order);
 }
 
 void			push_swap(t_pushswap *ps)
@@ -217,22 +226,35 @@ void			push_swap(t_pushswap *ps)
 		if (ps->quant_nums <= 100)
 			ps->chunks = 6;
 		else if (ps->quant_nums <= 500)
-			ps->chunks = 12;
+			ps->chunks = 13;
 		else
+		{
 			ps->chunks = 6 + (ps->quant_nums - 100)/50;
-		if (ps->chunks % 2 == 0 && ps->quant_nums > 100)
-			ps->chunks--;
-		//sort_hundred_max_args_1(ps);//medium
-		//sort_hundred_max_args_2(ps);//pstein
-		//sort_hundred_max_args_3(ps);//1013
-		sort_hundred_max_args_4(ps);//947
+			if (ps->chunks % 2 == 0 && ps->quant_nums > 100)
+				ps->chunks--;
+		}
+		sort_hundred_max_args_4(ps);
+		ft_memdel((void **)&ps->order);
 	}
-	print_analyse(ps);
+//	print_analyse(ps);
+
 }
 
 void            print_analyse(t_pushswap *ps)
-{	print_stk(ps->a, 1);
-	print_stk(ps->b, 2);
+{
+	//print_stk(ps->a, 1);
+	//print_stk(ps->b, 2);
+	/*int i;
+
+	i = 0;
+	ft_printf("NUM IN CHUNKS: %i\n", ps->quant_nums/ps->chunks);
+	ft_printf("ORDER: ");
+	while (i < ps->chunks)
+	{
+		ft_printf("%i ", ps->order[i]);
+		i++;
+	}
+	ft_printf("\n");*/
 	ft_printf("LST_A_SIZE: %i\n", find_lst_size(ps->a));
 	ft_printf("INSTRUCTIONS: %i\n", ps->analyse->instructions);//463 old
     ft_printf("COMMANDS_USED:\nsa: %i  ", ps->analyse->sa);

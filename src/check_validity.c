@@ -12,12 +12,12 @@
 
 #include "pushswap.h"
 
-int 		check_duplicates(int ac, char **av)
+int 		check_duplicates(int ac, char **av, int start_num)
 {
 	int i;
 	int j;
 
-	i = 1;
+	i = start_num;
 	while (i < ac)
 	{
 		j = i + 1;
@@ -32,12 +32,12 @@ int 		check_duplicates(int ac, char **av)
 	return (1);
 }
 
-int 		check_nums(int ac, char **av)
+int 		check_nums(int ac, char **av, int start_num)
 {
 	int i;
 	long long int num;
 
-	i = 1;
+	i = start_num;
 	while (i < ac)
 	{
 		num = ft_atoi(av[i]);
@@ -64,27 +64,27 @@ int 		check_instructions(char *av)
 	return (0);
 }
 
-int             check_order_args(int ac,char **av)
+int             check_order_args(int ac,char **av, int start_num)
 {
 	int i;
 
-	i = 1;
+	i = start_num;
 	while (i < ac)
 	{
-		if (i + 1 < ac && ft_atoi(av[i]) > ft_atoi(av[i + 1]))
+		if ((i + 1 < ac ) && ft_atoi(av[i]) > ft_atoi(av[i + 1]))
 			return (1);
 		i++;
 	}
 	return (0);
 }
 
-int 		check_validity(int ac, char **av)
+int 		check_validity(int ac, char **av, int start_num)
 {
-	if (check_nums(ac, av) == 0)
+	if (check_nums(ac, av, start_num) == 0)
 		return (0);
-	if (check_duplicates(ac, av) == 0)
+	if (check_duplicates(ac, av, start_num) == 0)////lj,fdbnm dfkblyjcnm lkz cnhjrb
 		return (0);
-	if (check_order_args(ac, av) == 0)
+	if (check_order_args(ac, av, start_num) == 0)
 		return (0);
 	return (1);
 }
