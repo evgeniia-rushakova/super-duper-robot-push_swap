@@ -96,31 +96,67 @@ int             find_the_biggest_num(t_stk *stk)
     return (max);
 }
 
+int             find_index_of_num(t_pushswap *ps, int num)
+{
+    int i;
+    int f;
+    i = 0;
+    while (i < ps->quant_nums)
+    {
+        if (ps->analyse->sorted_arr[i] == num)
+            break;
+        i++;
+    }
+    return (i);
+}
+
 void            push_back_elements_on_a(t_pushswap *ps)
 {
     int start;
     int end;
     int max_num_in_stk;
-
+    int test = 0;
+    int flag = 0;
 
     while (ps->b && ps->b->head)
     {
-		//print_stk(ps->b, 2);
         max_num_in_stk = find_the_biggest_num(ps->b);
         start = find_steps_before_num(ps->b, 's', find_lst_size(ps->b), max_num_in_stk);
         end = find_steps_before_num(ps->b, 'e', find_lst_size(ps->b), max_num_in_stk);
-      //  ft_printf("biggest_num: %i  start_steps: %i  end_steps: %i \n", max_num_in_stk, start, end);
-        if (start <= end) {
-            while (start--)
-				ps_rb(ps, 1);
-        } else
-        {
-            while (end--)
-                ps_rrb(ps, 1);
-        }
-		//print_stk(ps->b, 2);
-			ps_pa(ps, 1);
+
+
+          if (start <= end) {
+              while (ps->b->head->num != max_num_in_stk)///6521
+              {
+                  if ((find_index_of_num(ps, ps->b->head->num) + 1) == find_index_of_num(ps, max_num_in_stk))
+                  {
+                      ft_printf("MAX_NUM : %i\n", max_num_in_stk);
+                      ps_pa(ps, 1);
+                  }
+                  else
+                      ps_rb(ps, 1);
+              }
+          } else
+          {
+              //test = 1;
+              while (ps->b->head->num != max_num_in_stk)
+              {
+                 if ((find_index_of_num(ps, ps->b->head->num) + 1) == find_index_of_num(ps, max_num_in_stk))
+                      ps_pa(ps, 1);
+                 else
+                      ps_rrb(ps, 1);
+              }
+          }
+          ps_pa(ps, 1);
+          print_stk(ps->a, 1);
+          if (ps->a->head->next && ps->a->head->num > ps->a->head->next->num)
+              ps_sa(ps, 1);
+          print_stk(ps->a, 1);
+
+
+
     }
+    ft_printf("TEST: %i\n", test);//7087
 }
 
 void			create_order_of_chunks(t_pushswap *ps)
@@ -162,6 +198,23 @@ int 			is_num_in_chunk(int num,t_pushswap *ps, int curr_chunk)
 }
 
 
+int         show_last_num_in_stk(t_stk *stk)
+{
+    t_stk *tmp;
+
+    if(stk && stk->head)
+    {
+        tmp = stk->head;
+        while (tmp)
+        {
+            if (tmp->next == NULL)
+                return (tmp->num);
+            tmp = tmp->next;
+        }
+    }
+    return (0);
+}
+
 
 void			sort_hundred_max_args_4(t_pushswap *ps)
 {
@@ -183,8 +236,12 @@ void			sort_hundred_max_args_4(t_pushswap *ps)
 			{
 				if (is_num_in_chunk(tmp->num,ps,ps->order[counter]) == 1)
 				{
-					while (ps->a && ps->a->head->num != tmp->num) {
-						ps_ra(ps, 1);
+					while (ps->a && ps->a->head->num != tmp->num)
+					{
+					    if (ps->b && ps->b->head && (find_index_of_num(ps, show_last_num_in_stk(ps->b)) +1) == find_index_of_num(ps, ps->b->head->num))
+					        ps_rr(ps, 1);
+					    else
+						    ps_ra(ps, 1);
 					}
 					if (ps->a && ps->a->head && ps->a->head->num == tmp->num)
 					{
@@ -236,7 +293,7 @@ void			push_swap(t_pushswap *ps)
 		sort_hundred_max_args_4(ps);
 		ft_memdel((void **)&ps->order);
 	}
-//	print_analyse(ps);
+	print_analyse(ps);
 
 }
 

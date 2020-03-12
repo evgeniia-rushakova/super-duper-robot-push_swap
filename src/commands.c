@@ -28,6 +28,7 @@ void		ps_sa(t_pushswap *ps, int ps_ch)/*sa : swap a - swap the first 2 elements 
         }
     }
 	ps->analyse->instructions++;//del
+	ps->analyse->sa++;
 	if (ps_ch)
 		ft_printf("sa\n");
 }

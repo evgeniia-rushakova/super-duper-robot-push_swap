@@ -113,7 +113,7 @@ add_executable(checker
         src/utils_1.c
         src/utils_2.c)
 
-add_executable(pushswap
+add_executable(push_swap
         inc/pushswap.h
         libft/includes/ft_printf.h
         libft/includes/libft.h
