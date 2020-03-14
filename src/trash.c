@@ -329,3 +329,19 @@ int             find_holding_numbers2(int min, int max, int param, int counter)
     return (0);
 }
 
+int             is_num_bigger_than_others(t_stk *stk, int num)
+{
+	t_stk *head;
+
+	if (!stk || !(head = stk->head))
+		return (1);
+	while (head)
+	{
+		if (num < head->num)
+			return (-1);
+		head = head->next;
+	}
+	return (1);
+}
+
+

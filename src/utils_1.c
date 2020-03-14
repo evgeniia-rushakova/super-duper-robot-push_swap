@@ -140,7 +140,6 @@ void        free_ps(t_pushswap *ps)
             ft_memdel((void **)&ps->analyse->sorted_arr);
 		if (ps->analyse)
 			ft_memdel((void **)&ps->analyse);
-
 		ft_memdel((void **)&ps->b);
 		ft_memdel((void **)&ps);
 	}

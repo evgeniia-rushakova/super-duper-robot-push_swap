@@ -103,12 +103,9 @@ void			free_ps(t_pushswap *ps);
  * utils_2.c
  */
 void			print_stk(t_stk *head, int stack);//del
-void			find_max_min_medium_nums(t_pushswap *ps);
 int				check_order_simple(t_pushswap *ps, char stack);
-int				check_order_simple_rev(t_pushswap *ps, char stack);
 int				find_steps_before_num(t_stk *stk, char start_end, int quant, int num);
-void			get_minimum_on_top(t_pushswap *ps);
-void			repeat_function(int times,t_pushswap *ps, void (*f)(t_pushswap *));
+
 /*
  * lst_tools.c
  */
@@ -120,19 +117,16 @@ int             find_lst_size(t_stk *head);
 /*
  * three_five_args.c
  */
-void			sort_three_args(t_pushswap *ps, char stack);
-void			sort_five_max_args(t_pushswap *ps);
+void			sort_three_args(t_pushswap *ps);
+void			sort_twelve_max_args(t_pushswap *ps);
 
 void            print_analyse(t_pushswap *ps);
 
 /*
  * solution.c
  */
-int             is_num_bigger_than_others(t_stk *stk, int num);
 int             find_quant_nums_in_chunk(t_pushswap *ps, int counter);
-int             check_the_nearest_num_in_chunk(t_pushswap *ps, int counter, char opt);
-
-void            sort_hundred_max_args_1(t_pushswap *ps);
+int 			find_steps_before_num(t_stk *stk, char start_end, int quant, int num);
 void            push_back_elements_on_a(t_pushswap *ps);
 void			push_swap(t_pushswap *ps);
 /*
