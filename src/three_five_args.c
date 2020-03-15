@@ -12,13 +12,12 @@
 
 # include "pushswap.h"
 
-int             find_the_smallest_num(t_stk *stk)
+static int             find_the_smallest_num(t_stk *stk)
 {
 	t_stk *tmp;
 	int max;
 
 	max = 0;
-
 	if (stk && stk->head)
 	{
 		tmp = stk->head;
@@ -49,7 +48,8 @@ void			sort_three_args(t_pushswap *ps)
 		ps_rra(ps, 1);
 		ps_sa(ps, 1);
 	}
-	else if ((third_num->num == min && ps->a->head->num > sec_num->num) || sec_num->num == min)
+	else if ((third_num->num == min && ps->a->head->num > sec_num->num) ||
+	sec_num->num == min)
 	{
 		ps_sa(ps, 1);
 		sort_three_args(ps);
@@ -58,14 +58,15 @@ void			sort_three_args(t_pushswap *ps)
 		ps_rra(ps, 1);
 }
 
-void            get_minimum_on_top_on_a(t_pushswap *ps)
+static void            get_minimum_on_top_on_a(t_pushswap *ps)
 {
 	int start;
 	int end;
 	int min;
+
 	min = find_the_smallest_num(ps->a);
-	start = find_steps_before_num(ps->a,'s', find_lst_size(ps->a), min);
-	end = find_steps_before_num(ps->a,'e', find_lst_size(ps->a), min);
+	start = find_steps_before_num(ps->a, 's', find_lst_size(ps->a), min);
+	end = find_steps_before_num(ps->a, 'e', find_lst_size(ps->a), min);
 	if (start <= end)
 		while (ps->a->head->num != min)
 			ps_ra(ps, 1);

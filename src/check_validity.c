@@ -12,7 +12,7 @@
 
 #include "pushswap.h"
 
-int 		check_duplicates(int ac, char **av, int start_num)
+int				check_duplicates(int ac, char **av, int start_num)
 {
 	int i;
 	int j;
@@ -32,7 +32,7 @@ int 		check_duplicates(int ac, char **av, int start_num)
 	return (1);
 }
 
-int 		check_nums(int ac, char **av, int start_num)
+int				check_nums(int ac, char **av, int start_num)
 {
 	int i;
 	int j;
@@ -57,14 +57,16 @@ int 		check_nums(int ac, char **av, int start_num)
 	return (1);
 }
 
-int 		check_instructions(char *av)
+int				check_instructions(char *av)
 {
 	char **commands;
 	int j;
 
-	commands = (char *[11]){"sa\n", "sb\n", "ss\n", "pa\n", "pb\n", "ra\n", "rb\n", "rr\n", "rra\n", "rrb\n", "rrr\n"};
+	commands = (char *[22]){"sa\n", "sb\n", "ss\n", "pa\n", "pb\n", "ra\n",
+		"rb\n", "rr\n", "rra\n", "rrb\n", "rrr\n", "sa", "sb", "ss", "pa",
+		"pb", "ra", "rb", "rr", "rra", "rrb", "rrr"};
 	j = 0;
-	while (j < 11)
+	while (j < 22)
 	{
 		if (ft_strequ(commands[j], av) == 1)
 			return (1);
@@ -73,25 +75,25 @@ int 		check_instructions(char *av)
 	return (0);
 }
 
-int             check_order_args(int ac,char **av, int start_num)
+int				check_order_args(int ac, char **av, int start_num)
 {
 	int i;
 
 	i = start_num;
 	while (i < ac)
 	{
-		if ((i + 1 < ac ) && ft_atoi(av[i]) > ft_atoi(av[i + 1]))
+		if ((i + 1 < ac) && ft_atoi(av[i]) > ft_atoi(av[i + 1]))
 			return (1);
 		i++;
 	}
 	return (0);
 }
 
-int 		check_validity(int ac, char **av, int start_num)
+int	check_validity(int ac, char **av, int start_num)
 {
 	if (check_nums(ac, av, start_num) == 0)
 		return (0);
-	if (check_duplicates(ac, av, start_num) == 0)////lj,fdbnm dfkblyjcnm lkz cnhjrb
+	if (check_duplicates(ac, av, start_num) == 0)
 		return (0);
 	if (check_order_args(ac, av, start_num) == 0)
 		return (0);

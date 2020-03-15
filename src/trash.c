@@ -344,4 +344,19 @@ int             is_num_bigger_than_others(t_stk *stk, int num)
 	return (1);
 }
 
+int            is_this_nums_in_stk(t_stk *stk, int min, int middle, int max)
+{
+	t_stk *tmp;
+	int i;
+
+	i = 0;
+	tmp = stk->head;
+	while (tmp)
+	{
+		if (tmp->num == min || tmp->num == max || tmp->num == middle)
+			i++;
+		tmp = tmp->next;
+	}
+	return (i == 2 ? 1 : 0);
+}
 

@@ -108,7 +108,6 @@ add_executable(checker
         src/commands_2.c
         src/execute_instructions.c
         src/lst_tools.c
-        src/sorted_array.c
         src/three_five_args.c
         src/utils_1.c
         src/utils_2.c)
@@ -216,8 +215,7 @@ add_executable(push_swap
         src/lst_tools.c
         src/pushswap_main.c
         src/solution.c
-        src/sorted_array.c
         src/three_five_args.c
         src/utils_1.c
-        src/utils_2.c)
+        src/utils_2.c src/solution_utils.c src/solution_utils_2.c src/analyse.c src/utils_3.c)
 
