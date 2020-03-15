@@ -29,7 +29,7 @@ void			reverse_order_of_chunks(t_pushswap *ps)
 	if (!(ps->order = malloc(sizeof(int) * ps->chunks)))
 		error_out(ps);
 	i = 0;
-	chunks = ps->chunks;
+	chunks =ps->chunks;
 	while (i < ps->chunks)
 	{
 		ps->order[i] = chunks;

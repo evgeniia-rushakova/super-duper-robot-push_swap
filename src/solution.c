@@ -25,6 +25,7 @@ void            push_back_elements_on_a(t_pushswap *ps)
 				find_lst_size(ps->b), max_num_in_stk);
 		end = find_steps_before_num(ps->b, 'e',
 				find_lst_size(ps->b), max_num_in_stk);
+		ft_printf("NUM: %i START: %i END: %i\n",max_num_in_stk, start, end);
 		round_stk_a_before_max_num(ps, max_num_in_stk, start, end);
 		ps_pa(ps, 1);
 		if (ps->a->head->next && ps->a->head->num > ps->a->head->next->num)
@@ -79,12 +80,14 @@ static void			round_tmp(t_pushswap *ps, t_stk *tmp, int counter)
 void			sort_args(t_pushswap *ps)
 {
 	t_stk *tmp;
-	int counter = -1;
+	int counter;
 
+	counter = -1;
 	while (++counter < ps->chunks)
 	{
 		while (find_quant_nums_in_chunk(ps, ps->order[counter]) != 0)
 		{
+			ft_printf("CURRENT_CHUNK : %i\n", ps->order[counter]);
 			if(ps->a && ps->a->head)
 			{
 				tmp = ps->a->head;
@@ -111,8 +114,22 @@ void			push_swap(t_pushswap *ps)
 			ps->chunks = 5 + (ps->quant_nums - 100)/50;
 		reverse_order_of_chunks(ps);
 		sort_args(ps);
-		ft_memdel((void **)&ps->order);
+		//ft_memdel((void **)&ps->order);
 	}
+/*	int i;
+	t_stk *tmp;
+	tmp = ps->b->head;
+	ft_printf("TEST: ");
+	int cat = find_holding_numbers(ps, ps->chunks, 0,10);
+	int dog = find_holding_numbers(ps, ps->chunks, 1,10);
+	ft_printf("hold start: %i hold_end: %i \n",find_holding_numbers(ps, ps->chunks, 0, 12), find_holding_numbers(ps, ps->chunks, 1,12) );
+	while (tmp)
+	{
+		if (is_num_in_chunk(tmp->num,ps, 12) == 1)
+			ft_printf("%i ", tmp->num);
+		tmp = tmp->next;
+	}
+	ft_printf("\n");*/
 	print_analyse(ps);
 }
 

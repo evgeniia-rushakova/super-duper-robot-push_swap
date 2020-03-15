@@ -79,7 +79,9 @@ int             find_index_of_num(t_pushswap *ps, int num)
 int             find_holding_numbers(t_pushswap *ps,  int chunks,
 		int param, int counter)
 {
-	int num_in_chunks = ps->quant_nums / chunks;
+	int num_in_chunks;
+
+	num_in_chunks = ps->quant_nums / chunks;
 
 	if (counter == 1)
 		return (param == 0 ? ps->analyse->sorted_arr[0] :
