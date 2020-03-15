@@ -88,8 +88,8 @@ t_pushswap        *create_stacks(int ac, char **av, char *param)
 	if(!(ps = malloc(sizeof(t_pushswap))))
 		error_out(ps);
 	ps->b = create_data(ac, av, 'b', param);
-	ps->max = 0;
-	ps->min = 0;
+	//ps->max = 0;
+	//ps->min = 0;
 ////////////////////////////////////////////
 	if (!(ps->analyse = malloc(sizeof(t_analyse))))
 		error_out(ps);//add free for analyse

@@ -34,9 +34,9 @@ int             find_holding_numbers3(t_pushswap *ps,  int chunks, int param, in
     int num_in_chunks = ps->quant_nums / chunks;
     // 0 min 1 max
     if (counter == 1)
-        return (param == 0 ? ps->min : ps->analyse->sorted_arr[num_in_chunks]);
+        return (param == 0 ? ps->analyse->sorted_arr[0] : ps->analyse->sorted_arr[num_in_chunks]);
     else if (counter == chunks)
-        return (param == 0 ? ps->analyse->sorted_arr[num_in_chunks * (counter - 1) + 1] : ps->max);
+        return (param == 0 ? ps->analyse->sorted_arr[num_in_chunks * (counter - 1) + 1] : ps->analyse->sorted_arr[ps->quant_nums - 1]);
     else
         return (param == 0 ? ps->analyse->sorted_arr[num_in_chunks * (counter - 1) + 1] : ps->analyse->sorted_arr[num_in_chunks *counter]);
 }
@@ -181,6 +181,7 @@ void			create_order_of_chunks(t_pushswap *ps)
 		i++;
 		chunks--;
 	}
+
 }
 
 int 			is_num_in_chunk(int num,t_pushswap *ps, int curr_chunk)
@@ -194,11 +195,12 @@ int 			is_num_in_chunk(int num,t_pushswap *ps, int curr_chunk)
 void			sort_args(t_pushswap *ps)
 {
 	t_stk *tmp;
-	int counter = 0;
+	int counter = -1;
 	create_order_of_chunks(ps);
 
-	while (counter < ps->chunks)
+	while (counter++ < ps->chunks)//check invalid read
 	{
+	    ft_printf("chunks: %i current_counter: %i current_chunk: :%i \n",ps->chunks, counter, ps->order[counter]);
 		while (find_quant_nums_in_chunk(ps, ps->order[counter]) != 0)
 		{
 			if(ps->a && ps->a->head)
@@ -234,7 +236,6 @@ void			sort_args(t_pushswap *ps)
 					tmp = tmp->next;
 			}
 		}
-		counter++;
 	}
 	push_back_elements_on_a(ps);
 }
@@ -260,13 +261,13 @@ void			push_swap(t_pushswap *ps)
 		sort_args(ps);
 		ft_memdel((void **)&ps->order);
 	}
-	//print_analyse(ps);
+	print_analyse(ps);
 }
 
 void            print_analyse(t_pushswap *ps)
 {
 	print_stk(ps->a, 1);
-	print_stk(ps->b, 1);
+	print_stk(ps->b, 2);
 	ft_printf("LST_A_SIZE: %i\n", find_lst_size(ps->a));
 	ft_printf("INSTRUCTIONS: %i\n", ps->analyse->instructions);//463 old
     ft_printf("COMMANDS_USED:\nsa: %i  ", ps->analyse->sa);

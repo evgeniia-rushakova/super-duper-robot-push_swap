@@ -51,8 +51,8 @@ typedef struct          s_ps
     t_stk               *a;
     t_stk               *b;
 	int                 quant_nums;
-	int 				max;
-	int					min;
+//	int 				max;
+//	int					min;
 	int                 chunks;
 	int					*order;
 	t_analyse           *analyse;
