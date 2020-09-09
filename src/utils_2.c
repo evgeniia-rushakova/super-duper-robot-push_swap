@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jslave <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jslave <jslave@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 16:08:41 by jslave            #+#    #+#             */
-/*   Updated: 2020/02/22 16:08:43 by jslave           ###   ########.fr       */
+/*   Updated: 2020/03/16 16:58:10 by jslave           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void		print_stk(t_stk *head, int stack)
+void				print_stk(t_stk *head, int stack)
 {
 	if (!head || !head->head)
 		ft_printf("Stack %c is empty.\n", stack == 1 ? 'A' : 'B');
@@ -31,37 +31,16 @@ void		print_stk(t_stk *head, int stack)
 	}
 }
 
-void			find_max_min_medium_nums(t_pushswap *ps)
-{
-	int min;
-	int max;
-	t_stk *tmp;
-
-	tmp = ps->a->head;
-	min = tmp->num;
-	while (tmp && tmp->next)
-	{
-		if (min > tmp->next->num)
-			min = tmp->next->num;
-		tmp = tmp->next;
-	}
-	tmp = ps->a->head;
-	max = tmp->num;
-	while (tmp && tmp->next)
-	{
-		if (max < tmp->next->num)
-			max = tmp->next->num;
-		tmp = tmp->next;
-	}
-	ps->max = max;
-	ps->min = min;
-}
-
-int			check_order_simple(t_pushswap *ps, char stack)
+int					check_order_simple(t_pushswap *ps, char stack)
 {
 	t_stk *stk;
 
-	stk = stack == 'a' ? ps->a->head : ps->b->head;
+	if (stack == 'a' && ps->a && ps->a->head)
+		stk = ps->a->head;
+	else if (stack == 'b' && ps->b && ps->b->head)
+		stk = ps->b->head;
+	else
+		return (1);
 	while (stk)
 	{
 		if (stk->next)
@@ -72,20 +51,20 @@ int			check_order_simple(t_pushswap *ps, char stack)
 	return (1);
 }
 
-int 			find_steps_before_num(t_stk *stk, char start_end, int quant, int num)
+int					find_steps_before_num(t_stk *stk, char start_end,
+		int quant, int num)
 {
-	int st;
-	t_stk *tmp;
+	int			st;
+	t_stk		*tmp;
 
+	st = 0;
 	if (stk && stk->head)
 	{
 		tmp = stk->head;
-
-		st = 0;
 		while (tmp)
 		{
 			if (tmp->num == num)
-				break;
+				break ;
 			st++;
 			tmp = tmp->next;
 		}
@@ -93,31 +72,20 @@ int 			find_steps_before_num(t_stk *stk, char start_end, int quant, int num)
 	return (start_end == 's' ? st : (quant - st));
 }
 
-void			get_minimum_on_top(t_pushswap *ps)
+char				**parse_string_arg(char *str)
 {
-	int start_steps;
-	int end_steps;
+	char **res;
 
-	find_max_min_medium_nums(ps);
-	start_steps = find_steps_before_num(ps->a, 's', find_lst_size(ps->a), ps->min);
-	end_steps = find_steps_before_num(ps->a, 'e', find_lst_size(ps->a), ps->min);
-
-	if (start_steps == 0 || end_steps == 0)
-	{
-		if (end_steps == 0)
-			ps_rra(ps, 1);
-		return;
-	}
-	if (start_steps < end_steps)
-		while (start_steps-- != 0)
-			ps_ra(ps, 1);
-	else
-		while (end_steps-- != 0)
-			ps_rra(ps, 1);
+	res = ft_strsplit(str, ' ');
+	return (res);
 }
 
-void			repeat_function(int times,t_pushswap *ps, void (*f)(t_pushswap *))
+int					find_2d_arr_size(char **arr)
 {
-	while (times--)
-		(*f)(ps);
+	int i;
+
+	i = 0;
+	while (arr[i])
+		i++;
+	return (i);
 }

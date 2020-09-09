@@ -1,57 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.c                                            :+:      :+:    :+:   */
+/*   lst_tools.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jslave <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jslave <jslave@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 15:28:41 by jslave            #+#    #+#             */
-/*   Updated: 2020/02/11 15:28:43 by jslave           ###   ########.fr       */
+/*   Updated: 2020/03/16 16:41:31 by jslave           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int             find_lst_size(t_stk *head)
+int					find_lst_size(t_stk *head)
 {
-    int i;
+	int i;
 
-    i = 0;
-    if (!head)
-        return (0);
-    while (head)
-    {
-        i++;
-        head = head->next;
-    }
-    return (i);
+	i = 0;
+	if (!head)
+		return (0);
+	while (head)
+	{
+		i++;
+		head = head->next;
+	}
+	return (i);
 }
 
-t_stk            *push(t_stk *head, t_stk *new_head)//vstavit element v golovu spiska
+t_stk				*push(t_stk *head, t_stk *new_head)
 {
 	if (!head)
-    {
-        head = new_head;
-        head->head = new_head;
-        head->next = NULL;
-    }
+	{
+		head = new_head;
+		head->head = new_head;
+		head->next = NULL;
+	}
 	else
 	{
-        new_head->next = head;
-        new_head->head = new_head;
-    }
+		new_head->next = head;
+		new_head->head = new_head;
+	}
 	return (new_head);
 }
 
-t_stk       *remove_elem(t_stk *elem)
+t_stk				*remove_elem(t_stk *elem)
 {
 	t_stk *tmp;
 
 	tmp = elem->head;
-	while(tmp)
+	while (tmp)
 	{
 		if (tmp->next == elem)
-			break;
+			break ;
 		tmp = tmp->next;
 	}
 	if (tmp && tmp->next)
@@ -61,11 +61,11 @@ t_stk       *remove_elem(t_stk *elem)
 	return (elem);
 }
 
-t_stk       *append_elem(t_stk *stack_head, t_stk *elem)
+t_stk				*append_elem(t_stk *stack_head, t_stk *elem)
 {
-    t_stk *tmp;
+	t_stk *tmp;
 
-    if (stack_head)
+	if (stack_head)
 	{
 		tmp = stack_head;
 		while (tmp && tmp->next)
@@ -73,12 +73,13 @@ t_stk       *append_elem(t_stk *stack_head, t_stk *elem)
 		tmp->next = elem;
 		elem->next = NULL;
 		elem->head = stack_head->head;
-	} else
+	}
+	else
 		return (elem);
-    return (stack_head);
+	return (stack_head);
 }
 
-void        change_head(t_stk *stack, t_stk *new_head)
+void				change_head(t_stk *stack, t_stk *new_head)
 {
 	t_stk *tmp;
 

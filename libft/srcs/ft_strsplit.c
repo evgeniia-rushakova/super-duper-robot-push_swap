@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jslave <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jslave <jslave@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 16:24:29 by jslave            #+#    #+#             */
-/*   Updated: 2019/09/17 19:59:11 by jslave           ###   ########.fr       */
+/*   Updated: 2020/03/16 17:07:13 by jslave           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int				qualw(char *s, char c)
 	return (res);
 }
 
-void				    memfree(char **str, int len)
+void					memfree(char **str, int len)
 {
 	int i;
 

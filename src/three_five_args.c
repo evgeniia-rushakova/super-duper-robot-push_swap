@@ -3,59 +3,93 @@
 /*                                                        :::      ::::::::   */
 /*   three_five_args.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jslave <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jslave <jslave@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/23 17:11:19 by jslave            #+#    #+#             */
-/*   Updated: 2020/02/23 17:11:29 by jslave           ###   ########.fr       */
+/*   Updated: 2020/03/16 16:54:32 by jslave           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "pushswap.h"
+#include "pushswap.h"
 
-void			sort_three_args(t_pushswap *ps, char stack)
+static int			find_the_smallest_num(t_stk *stk)
 {
-	t_stk *sec_num;
-	t_stk *third_num;
+	t_stk		*tmp;
+	int			max;
 
-	sec_num = stack == 'a' ? ps->a->head->next : ps->b->head->next;
+	max = 0;
+	if (stk && stk->head)
+	{
+		tmp = stk->head;
+		max = tmp->num;
+		while (tmp && tmp->next)
+		{
+			if (max > tmp->next->num)
+				max = tmp->next->num;
+			tmp = tmp->next;
+		}
+	}
+	return (max);
+}
+
+void				sort_three_args(t_pushswap *ps)
+{
+	t_stk		*sec_num;
+	t_stk		*third_num;
+	int			min;
+
+	min = find_the_smallest_num(ps->a);
+	sec_num = ps->a->head->next;
 	third_num = sec_num->next;
 	if (check_order_simple(ps, 'a') == 1)
-		return;
-	if (ps->a->head->num == ps->min)
+		return ;
+	if (ps->a->head->num == min)
 	{
 		ps_rra(ps, 1);
 		ps_sa(ps, 1);
 	}
-	else if ((third_num->num == ps->min && ps->a->head->num > sec_num->num) || sec_num->num == ps->min)
+	else if ((third_num->num == min && ps->a->head->num > sec_num->num) ||
+	sec_num->num == min)
 	{
 		ps_sa(ps, 1);
-		sort_three_args(ps, 'a');
+		sort_three_args(ps);
 	}
-	else if (third_num->num == ps->min && ps->a->head->num < sec_num->num)//892
+	else if (third_num->num == min && ps->a->head->num < sec_num->num)
 		ps_rra(ps, 1);
 }
 
-void			sort_five_max_args(t_pushswap *ps)
+static void			get_minimum_on_top_on_a(t_pushswap *ps)
 {
-	get_minimum_on_top(ps);
-	ps_pb(ps, 1);
-	if (ps->quant_nums == 4)
-	{
-		find_max_min_medium_nums(ps);
-		sort_three_args(ps, 'a');
-		ps_pa(ps, 1);
-	}
-	if (ps->quant_nums == 5)
-	{
-		get_minimum_on_top(ps);
-		ps_pb(ps, 1);
-		find_max_min_medium_nums(ps);
-		sort_three_args(ps, 'a');
-		if (ps->b->head->num < ps->b->head->next->num)
-			ps_sb(ps, 1);
-		//repeat_function(2, ps, ps_pa);
-		ps_pa(ps, 1);
-		ps_pa(ps, 1);
-	}
+	int start;
+	int end;
+	int min;
+
+	min = find_the_smallest_num(ps->a);
+	start = find_steps_before_num(ps->a, 's', find_lst_size(ps->a), min);
+	end = find_steps_before_num(ps->a, 'e', find_lst_size(ps->a), min);
+	if (start <= end)
+		while (ps->a->head->num != min)
+			ps_ra(ps, 1);
+	else
+		while (ps->a->head->num != min)
+			ps_rra(ps, 1);
 }
 
+void				sort_twelve_max_args(t_pushswap *ps)
+{
+	int diff;
+
+	diff = ps->quant_nums - 3;
+	while (diff)
+	{
+		get_minimum_on_top_on_a(ps);
+		ps_pb(ps, 1);
+		diff--;
+	}
+	sort_three_args(ps);
+	while (diff != ps->quant_nums - 3)
+	{
+		ps_pa(ps, 1);
+		diff++;
+	}
+}

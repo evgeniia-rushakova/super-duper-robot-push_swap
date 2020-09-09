@@ -6,7 +6,7 @@
 /*   By: jslave <jslave@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 18:41:58 by jslave            #+#    #+#             */
-/*   Updated: 2019/10/04 18:56:57 by jslave           ###   ########.fr       */
+/*   Updated: 2020/03/16 16:59:52 by jslave           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ len);
 char					*ft_strjoin(char const *s1, char const *s2);
 char					*ft_strtrim(char const *s);
 char					**ft_strsplit(char const *s, char c);
-void				    memfree(char **str, int len);
+void					memfree(char **str, int len);
 char					*ft_itoa(int n);
 void					ft_putchar(char c);
 void					ft_putstr(char const *s);
@@ -101,6 +101,7 @@ char					*ft_strjoinfree_s2(char *s1, char *s2);
 char					*ft_strjoinfree_both(char *s1, char *s2);
 int						get_next_line(int fd, char **line);
 int						ft_atoi_base(const char *str, int base);
+long long int			ft_atoi_long_long(const char *str);
 char					*ft_itoa_base(unsigned long long int value, int base);
 char					*ft_itoa_base_unsigned(unsigned long long int num,
 		int base);
@@ -109,6 +110,6 @@ size_t					find_len_of_num(long long int n);
 char					*ft_itoa_long_long_uns(unsigned long long int n);
 char					*ft_itoa_long_long(long long int n);
 char					*ft_strreverse(char *str);
-int					    ft_printf(const char *format, ...);
+int						ft_printf(const char *format, ...);
 
 #endif
